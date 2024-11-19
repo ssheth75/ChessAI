@@ -4,23 +4,25 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
-#include "util.cpp"
+#include "util.hpp"
 #include "Piece.hpp"
 
-class Board {
+class Board
+{
 public:
-    Board();  // Constructor to load resources and set up the board
-    void draw(sf::RenderWindow &window);  // Draw the board and pieces
-
-    void makeMove(Piece piece, Move move);
+    Board();
+    void draw(sf::RenderWindow &window);      // Draw the board and pieces
+    void handleClick(int mouseX, int mouseY); // Handle mouse clicks
+    void makeMove(Piece *piece, Move move);   // Make a move and update the board
+    Piece *getPieceAt(int x, int y) const;    // Get the piece at a specific position
+    void removePiece(const int row, const int col);
 
 private:
-    sf::Texture pieceTextures[12];  // Textures for all 12 chess piece types
-    sf::Sprite pieceSprites[12];    // Sprites for rendering the pieces
-    std::vector<std::vector<int>> grid;  // 2D grid for the board state
+    std::vector<std::vector<Piece *>> grid; // 2D grid of piece pointers
+    sf::Texture pieceTextures[12];          // Textures for pieces
+    sf::Sprite pieceSprites[12];            // Sprites for pieces
 
-    void loadTextures();   // Load PNG images for pieces
-    void setupBoard();     // Place pieces in initial positions
+    void setupBoard(); // Initialize the board with pieces
 };
 
 #endif

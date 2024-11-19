@@ -1,15 +1,23 @@
+#ifndef QUEEN_HPP
+#define QUEEN_HPP
+
 #include "Piece.hpp"
 #include <vector>
-#include "util.cpp"
+#include "util.hpp"
 
+class Queen : public Piece
+{
+public:
+    Queen(const std::string &color);
 
-class Pawn : Piece {
-    public:
-    Pawn();
+    ~Queen() override = default;
 
-    ~Pawn();
+    std::vector<Move> generateMoves(uint32_t row, uint32_t col, const std::vector<std::vector<Piece *>> &grid) const override;
+    std::string getType() const override;
 
-    std::vector<Move> generateValidMoves();
-
-    private:
+private:
+std::string blackGraphic = "assets/bq.png";
+std::string whiteGraphic = "assets/wq.png";
 };
+
+#endif

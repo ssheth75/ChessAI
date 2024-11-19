@@ -1,15 +1,23 @@
+#ifndef ROOK_HPP
+#define ROOK_HPP
+
 #include "Piece.hpp"
 #include <vector>
-#include "util.cpp"
+#include "util.hpp"
 
+class Rook : public Piece
+{
+public:
+    Rook(const std::string &color);
 
-class Pawn : Piece {
-    public:
-    Pawn();
+    ~Rook() override = default;
 
-    ~Pawn();
+    std::vector<Move> generateMoves(uint32_t row, uint32_t col, const std::vector<std::vector<Piece *>> &grid) const override;
+    std::string getType() const override;
 
-    std::vector<Move> generateValidMoves();
-
-    private:
+private:
+std::string blackGraphic = "assets/br.png";
+std::string whiteGraphic = "assets/wr.png";
 };
+
+#endif

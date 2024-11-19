@@ -1033,5 +1033,13 @@ CMakeFiles/chessAI.dir/Board.cpp.o: /Users/shirvilsheth/ChessAI/Board.cpp \
   /opt/homebrew/include/SFML/Graphics/Sprite.hpp \
   /opt/homebrew/include/SFML/Graphics/Text.hpp \
   /opt/homebrew/include/SFML/Graphics/VertexBuffer.hpp \
+  /Users/shirvilsheth/ChessAI/util.hpp \
+  /Users/shirvilsheth/ChessAI/Piece.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/iostream \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/istream
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/istream \
+  /Users/shirvilsheth/ChessAI/Pawn.hpp \
+  /Users/shirvilsheth/ChessAI/Rook.hpp \
+  /Users/shirvilsheth/ChessAI/Bishop.hpp \
+  /Users/shirvilsheth/ChessAI/Knight.hpp \
+  /Users/shirvilsheth/ChessAI/King.hpp \
+  /Users/shirvilsheth/ChessAI/Queen.hpp

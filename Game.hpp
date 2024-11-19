@@ -9,6 +9,9 @@ public:
     Game();            // Constructor to initialize the game
     void run();        // Main game loop
 
+    void handleClick(const int x, const int y, bool &turn);
+
+
 private:
     sf::RenderWindow window;  // The game window
     Board board;              // The chessboard

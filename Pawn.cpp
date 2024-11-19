@@ -1,21 +1,26 @@
 #include "Piece.hpp"
 #include <vector>
-#include "util.cpp"
+#include "util.hpp"
+#include "Pawn.hpp"
+#include <iostream>
 
+Pawn::Pawn(const std::string &color) : Piece(color)
+{
+    std::string textureFile = (color == "white") ? this->whiteGraphic : this->blackGraphic;
 
-class Pawn : Piece {
-    public:
-    Pawn();
-
-    ~Pawn();
-
-    std::vector<Move> generateMoves(){
-
+    if (!texture.loadFromFile(textureFile))
+    {
+        std::cout << "Error loading texture: " << textureFile << std::endl;
     }
+    sprite.setTexture(texture); // Set the loaded texture to the sprite
+}
 
-    std::string getType() const override{
-        return "Pawn";
-    }
+std::vector<Move> Pawn::generateMoves(uint32_t row, uint32_t col, const std::vector<std::vector<Piece *>> &grid) const
+{
+    return {};
+}
 
-    private:
-};
+std::string Pawn::getType() const
+{
+    return "Pawn";
+}

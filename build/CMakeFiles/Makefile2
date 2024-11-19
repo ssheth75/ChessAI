@@ -85,12 +85,12 @@ clean: CMakeFiles/chessAI.dir/clean
 CMakeFiles/chessAI.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chessAI.dir/build.make CMakeFiles/chessAI.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chessAI.dir/build.make CMakeFiles/chessAI.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=1,2,3,4 "Built target chessAI"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target chessAI"
 .PHONY : CMakeFiles/chessAI.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/chessAI.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shirvilsheth/ChessAI/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shirvilsheth/ChessAI/build/CMakeFiles 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/chessAI.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shirvilsheth/ChessAI/build/CMakeFiles 0
 .PHONY : CMakeFiles/chessAI.dir/rule
