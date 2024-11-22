@@ -2,6 +2,9 @@
 #include <stdint.h>
 
 struct Move{
-    uint32_t x;
-    uint32_t y;
+    int x;
+    int y;
+
+    Move(int x, int y) : x(x), y(y) {} // Constructor
+
 };

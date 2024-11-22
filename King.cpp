@@ -4,7 +4,7 @@
 #include "King.hpp"
 #include <iostream>
 
-King::King(const std::string &color) : Piece(color)
+King::King(const std::string &color, const int xPosition, const int yPosition) : Piece(color, xPosition, yPosition)
 {
     std::string textureFile = (color == "white") ? this->whiteGraphic : this->blackGraphic;
 
@@ -15,7 +15,7 @@ King::King(const std::string &color) : Piece(color)
     sprite.setTexture(texture); // Set the loaded texture to the sprite
 }
 
-std::vector<Move> King::generateMoves(uint32_t row, uint32_t col, const std::vector<std::vector<Piece *>> &grid) const
+std::vector<Move> King::generateMoves(int row, int col, const std::vector<std::vector<Piece *>> &grid) const
 {
     return {};
 }

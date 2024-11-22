@@ -8,11 +8,11 @@
 class Queen : public Piece
 {
 public:
-    Queen(const std::string &color);
+    Queen(const std::string &color, const int xPosition, const int yPosition);
 
     ~Queen() override = default;
 
-    std::vector<Move> generateMoves(uint32_t row, uint32_t col, const std::vector<std::vector<Piece *>> &grid) const override;
+    std::vector<Move> generateMoves(int row, int col, const std::vector<std::vector<Piece *>> &grid) const override;
     std::string getType() const override;
 
 private:

@@ -16,11 +16,15 @@ public:
     void makeMove(Piece *piece, Move move);   // Make a move and update the board
     Piece *getPieceAt(int x, int y) const;    // Get the piece at a specific position
     void removePiece(const int row, const int col);
+    bool inCheck(const bool &turn);
+    bool movesHighlighted = false;
+    std::vector<Move> highlightedMoves; // Valid moves for the selected piece
+
+    std::vector<std::vector<Piece *>> grid; // 2D grid of piece pointers
 
 private:
-    std::vector<std::vector<Piece *>> grid; // 2D grid of piece pointers
-    sf::Texture pieceTextures[12];          // Textures for pieces
-    sf::Sprite pieceSprites[12];            // Sprites for pieces
+    sf::Texture pieceTextures[12]; // Textures for pieces
+    sf::Sprite pieceSprites[12];   // Sprites for pieces
 
     void setupBoard(); // Initialize the board with pieces
 };

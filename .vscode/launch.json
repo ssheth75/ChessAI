@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Test",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/chessAI",
+            "stdio": [
+                null, // redirect stdin
+                null, // redirect stdout
+                null // redirect stderr
+            ],
+            "args": [],
+            "stopOnEntry": false,
+            "cwd": "${workspaceFolder}/build",
+        },
+    ]
+}

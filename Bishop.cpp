@@ -4,7 +4,7 @@
 #include "Bishop.hpp"
 #include <iostream>
 
-Bishop::Bishop(const std::string &color) : Piece(color)
+Bishop::Bishop(const std::string &color, const int xPosition, const int yPosition) : Piece(color, xPosition, yPosition)
 {
     std::string textureFile = (color == "white") ? this->whiteGraphic : this->blackGraphic;
 
@@ -15,7 +15,7 @@ Bishop::Bishop(const std::string &color) : Piece(color)
     sprite.setTexture(texture); // Set the loaded texture to the sprite
 }
 
-std::vector<Move> Bishop::generateMoves(uint32_t row, uint32_t col, const std::vector<std::vector<Piece *>> &grid) const
+std::vector<Move> Bishop::generateMoves(int row, int col, const std::vector<std::vector<Piece *>> &grid) const
 {
     return {};
 }

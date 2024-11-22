@@ -7,6 +7,8 @@ project(ChessAI VERSION 1.0)
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_BUILD_TYPE Debug)
+
 
 # Add the SFML library
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)

@@ -45,27 +45,59 @@ void Game::handleClick(const int x, const int y, bool &turn)
     // Update game logic based on the event
     // For example, move pieces, handle clicks, etc.
     std::cout << "x: " << x << " y: " << y << " " << std::endl;
-    uint16_t row = y / 100;
-    uint16_t col = x / 100;
-
+    uint16_t row = x / 100;
+    uint16_t col = y / 100;
 
     std::cout << "row: " << row << " col: " << col << " " << std::endl;
 
     if (row < 0 || row >= 8 || col < 0 || col >= 8)
         return;
 
-    // Get the clicked piece
-    Piece *piece = board.getPieceAt(row, col);
-    if (piece)
+    if (selectedPiece)
     {
-        board.removePiece(row, col);
-        // std::vector<Move> possibleMoves = piece->generateMoves(row, col, grid);
+        // Check if the clicked square is a valid move
+        for (const Move &move : board.highlightedMoves)
+        {
+            if (move.x == col && move.y == row)
+            {
+                // Make the move
+                board.makeMove(selectedPiece, move);
 
-        // // Highlight possible moves or pass them to the UI
-        // for (const Move& move : possibleMoves) {
-        //     std::cout << "Possible move: (" << move.x << ", " << move.y << ")\n";
-        // }
+                // Clear the selected piece and highlighted moves
+                selectedPiece = nullptr;
+                board.highlightedMoves.clear();
+
+                // Toggle the turn
+                turn = !turn;
+
+                return;
+            }
+        }
+
+        // If not a valid move, deselect the piece
+        selectedPiece = nullptr;
+        board.highlightedMoves.clear();
     }
 
-    turn = !turn;
+    // Get the piece at the clicked position
+    Piece *piece = board.getPieceAt(col, row);
+
+    // Select the piece if it matches the current turn
+    if (piece && piece->getColor() == (turn ? "white" : "black"))
+    {
+        selectedPiece = piece;
+
+        // Generate valid moves
+        board.highlightedMoves = piece->generateMoves(row, col, board.grid);
+
+
+        // Log the moves for debugging
+        std::cout << "Valid moves for " << piece->getType() << " at (" << row << ", " << col << "):" << std::endl;
+        for (const Move &move : board.highlightedMoves)
+        {
+            std::cout << "(" << move.x << ", " << move.y << ")" << std::endl;
+        }
+    }
+
+
 }

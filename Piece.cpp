@@ -5,7 +5,7 @@
 #include <iostream>
 
 
-Piece::Piece(const std::string& color) : color(color) {}
+Piece::Piece(const std::string& color, int xPosition, int yPosition) : color(color), xPosition(xPosition), yPosition(yPosition) {}
 
 Piece::~Piece() {}
 
@@ -27,3 +27,6 @@ void Piece::draw(sf::RenderWindow& window, int x, int y, int squareSize) {
     window.draw(sprite);
 }
 
+std::string Piece::getColor(){
+    return color;
+}

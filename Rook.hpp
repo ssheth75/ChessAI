@@ -8,11 +8,11 @@
 class Rook : public Piece
 {
 public:
-    Rook(const std::string &color);
+    Rook(const std::string &color, const int xPosition, const int yPosition);
 
     ~Rook() override = default;
 
-    std::vector<Move> generateMoves(uint32_t row, uint32_t col, const std::vector<std::vector<Piece *>> &grid) const override;
+    std::vector<Move> generateMoves(int row, int col, const std::vector<std::vector<Piece *>> &grid) const override;
     std::string getType() const override;
 
 private:
