@@ -15,12 +15,25 @@ Rook::Rook(const std::string &color, const int xPosition, const int yPosition) :
     sprite.setTexture(texture); // Set the loaded texture to the sprite
 }
 
+
+
 std::vector<Move> Rook::generateMoves(int row, int col, const std::vector<std::vector<Piece *>> &grid) const
 {
-    return {};
+    std::vector<Move> moves;
+
+    std::string color = grid[col][row]->getColor();
+
+    checkAdjacentMoves(row, col, -1, 0, moves, grid, color); // Check left
+    checkAdjacentMoves(row, col, 1, 0, moves, grid, color);  // Check right
+    checkAdjacentMoves(row, col, 0, 1, moves, grid, color);  // Check above
+    checkAdjacentMoves(row, col, 0, -1, moves, grid, color); // Check below
+
+    return moves;
 }
 
 std::string Rook::getType() const
 {
     return "Rook";
 }
+
+// Checks all rook moves
