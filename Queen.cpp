@@ -5,9 +5,9 @@
 #include "Board.hpp"
 #include <iostream>
 
-Queen::Queen(const std::string &color, const int xPosition, const int yPosition, const std::string name) : Piece(color, xPosition, yPosition, name)
+Queen::Queen(Player color, const int col, const int row, const std::string name) : Piece(color, col, row, name)
 {
-    std::string textureFile = (color == "white") ? this->whiteGraphic : this->blackGraphic;
+    std::string textureFile = (color == Player::WHITE) ? "assets/wq.png" : "assets/bq.png";
 
     if (!texture.loadFromFile(textureFile))
     {
@@ -18,22 +18,21 @@ Queen::Queen(const std::string &color, const int xPosition, const int yPosition,
 
 std::vector<Move> Queen::generateMoves(int col, int row, const Board &board) const
 {
-    std::vector<Move> potentialMoves;
-    std::string color = board.grid[col][row]->getColor();
+    std::vector<Move> moves;
+    Player color = board.m_grid[col][row]->getColor();
 
-    // Check left, right, up, down
-    board.checkStarMoves(row, col, -1, 0, potentialMoves, color); // Check left
-    board.checkStarMoves(row, col, 1, 0, potentialMoves, color);  // Check right
-    board.checkStarMoves(row, col, 0, 1, potentialMoves, color);  // Check above
-    board.checkStarMoves(row, col, 0, -1, potentialMoves, color); // Check below
+    board.checkStarMoves(row, col, -1, 0, moves, color); // Check left
+    board.checkStarMoves(row, col, 1, 0, moves, color);  // Check right
+    board.checkStarMoves(row, col, 0, 1, moves, color);  // Check below
+    board.checkStarMoves(row, col, 0, -1, moves, color); // Check above
 
     // Check diagonals
-    board.checkStarMoves(row, col, -1, 1, potentialMoves, color);
-    board.checkStarMoves(row, col, 1, -1, potentialMoves, color);
-    board.checkStarMoves(row, col, 1, 1, potentialMoves, color);
-    board.checkStarMoves(row, col, -1, -1, potentialMoves, color);
+    board.checkStarMoves(row, col, -1, 1, moves, color);
+    board.checkStarMoves(row, col, 1, -1, moves, color);
+    board.checkStarMoves(row, col, 1, 1, moves, color);
+    board.checkStarMoves(row, col, -1, -1, moves, color);
 
-    return potentialMoves;
+    return moves;
 }
 
 std::string Queen::getType() const

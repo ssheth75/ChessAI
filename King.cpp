@@ -5,9 +5,9 @@
 #include "Board.hpp"
 #include <iostream>
 
-King::King(const std::string &color, const int xPosition, const int yPosition, const std::string name) : Piece(color, xPosition, yPosition, name)
+King::King(Player color, const int col, const int row, const std::string name) : Piece(color, col, row, name)
 {
-    std::string textureFile = (color == "white") ? this->whiteGraphic : this->blackGraphic;
+    std::string textureFile = (color == Player::WHITE) ? "assets/wk.png" : "assets/bk.png";
 
     if (!texture.loadFromFile(textureFile))
     {
@@ -18,8 +18,8 @@ King::King(const std::string &color, const int xPosition, const int yPosition, c
 
 std::vector<Move> King::generateMoves(int col, int row, const Board &board) const
 {
-    std::vector<Move> potentialMoves;
-    std::string color = board.grid[col][row]->getColor();
+    std::vector<Move> moves;
+    Player color = board.m_grid[col][row]->getColor();
 
     // Possible directions the king can move
     std::vector<std::pair<int, int>> directions = {
@@ -42,17 +42,17 @@ std::vector<Move> King::generateMoves(int col, int row, const Board &board) cons
         // Ensure the move is within the bounds of the board
         if (newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8)
         {
-            Piece *target = board.grid[newCol][newRow];
+            Piece *target = board.m_grid[newCol][newRow];
             if (target == nullptr || target->getColor() != color) // Empty or opponent's piece
             {
-                potentialMoves.push_back({newCol, newRow});
+                moves.push_back({newCol, newRow});
             }
         }
     }
 
-    // Add castling
+    // Add castling later
 
-    return potentialMoves;
+    return moves;
 }
 
 std::string King::getType() const

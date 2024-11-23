@@ -8,21 +8,18 @@
 class Rook : public Piece
 {
 public:
-    Rook(const std::string &color, const int xPosition, const int yPosition, const std::string name);
+    Rook(Player color, const int col, const int row, const std::string name);
 
     Rook *clone() const override
     {
-        return new Rook(*this); // Copy constructor
+        return new Rook(*this); 
     }
 
     ~Rook() override = default;
 
+private:
     std::vector<Move> generateMoves(int col, int row, const Board &board) const override;
     std::string getType() const override;
-
-private:
-    std::string blackGraphic = "assets/br.png";
-    std::string whiteGraphic = "assets/wr.png";
 };
 
 #endif

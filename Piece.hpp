@@ -11,7 +11,7 @@ class Board;
 class Piece
 {
 public:
-    Piece(const std::string &color, const int xPostion, const int yPosition, const std::string name); // Constructor
+    Piece(Player color, const int col, const int row, const std::string name); // Constructor
 
     virtual Piece *clone() const = 0; // Pure virtual function for cloning
 
@@ -23,14 +23,14 @@ public:
 
     virtual void draw(sf::RenderWindow &window, int x, int y, int squareSize);
 
-    std::string getColor();
+    Player getColor();
 
-    int xPosition;
-    int yPosition;
+    int col;
+    int row;
     std::string name;
 
 protected:
-    std::string color;
+    Player color;
     sf::Texture texture;
     sf::Sprite sprite;
 };

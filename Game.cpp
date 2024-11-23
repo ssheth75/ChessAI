@@ -61,16 +61,16 @@ void Game::handleClick(const int x, const int y, bool &turn)
     if (selectedPiece)
     {
         // Check if the clicked square is a valid move
-        for (const Move &move : board.highlightedMoves)
+        for (const Move &move : board.m_validMoves)
         {
-            if (move.x == col && move.y == row)
+            if (move.col == col && move.row == row)
             {
                 // Make the move
                 board.makeMove(selectedPiece, move);
 
                 // Clear the selected piece and highlighted moves
                 selectedPiece = nullptr;
-                board.highlightedMoves.clear();
+                board.m_validMoves.clear();
 
                 // Toggle the turn
                 turn = !turn;
@@ -81,25 +81,25 @@ void Game::handleClick(const int x, const int y, bool &turn)
 
         // If not a valid move, deselect the piece
         selectedPiece = nullptr;
-        board.highlightedMoves.clear();
+        board.m_validMoves.clear();
     }
 
     // Get the piece at the clicked position
     Piece *piece = board.getPieceAt(col, row);
 
     // Select the piece if it matches the current turn
-    if (piece && piece->getColor() == (turn ? "white" : "black"))
+    if (piece && piece->getColor() == (turn ? Player::WHITE : Player::BLACK))
     {
         selectedPiece = piece;
         // Generate valid moves
         auto allMoves = piece->generateMoves(col, row, board);
-        board.highlightedMoves = board.validatedMoves(allMoves, piece);
+        board.m_validMoves = board.validatedMoves(allMoves, piece);
 
         // Log the moves for debugging
         std::cout << "Valid moves for " << piece->getType() << " at (" << row << ", " << col << "):" << std::endl;
-        for (const Move &move : board.highlightedMoves)
+        for (const Move &move : board.m_validMoves)
         {
-            std::cout << "(" << move.x << ", " << move.y << ")" << std::endl;
+            std::cout << "(" << move.col << ", " << move.row << ")" << std::endl;
         }
     }
 }

@@ -5,9 +5,9 @@
 #include "Board.hpp"
 #include <iostream>
 
-Bishop::Bishop(const std::string &color, const int xPosition, const int yPosition, const std::string name) : Piece(color, xPosition, yPosition, name)
+Bishop::Bishop(Player color, const int col, const int row, const std::string name) : Piece(color, col, row, name)
 {
-    std::string textureFile = (color == "white") ? this->whiteGraphic : this->blackGraphic;
+    std::string textureFile = (color == Player::WHITE) ? "assets/wb.png" : "assets/bb.png";
 
     if (!texture.loadFromFile(textureFile))
     {
@@ -18,19 +18,18 @@ Bishop::Bishop(const std::string &color, const int xPosition, const int yPositio
 
 std::vector<Move> Bishop::generateMoves(int col, int row, const Board &board) const
 {
-    std::string color = board.grid[col][row]->getColor();
+    Player color = board.m_grid[col][row]->getColor();
 
-    // GENERATE ALL MOVES THAT CAUSE OR ARE A NON SELF-CHECK STATE
 
     // Check diagonals for potential moves
-    std::vector<Move> potentialMoves;
-    board.checkStarMoves(row, col, -1, 1, potentialMoves, color);
-    board.checkStarMoves(row, col, 1, -1, potentialMoves, color);
-    board.checkStarMoves(row, col, 1, 1, potentialMoves, color);
-    board.checkStarMoves(row, col, -1, -1, potentialMoves, color);
+    std::vector<Move> moves;
+    board.checkStarMoves(row, col, -1, 1, moves, color);
+    board.checkStarMoves(row, col, 1, -1, moves, color);
+    board.checkStarMoves(row, col, 1, 1, moves, color);
+    board.checkStarMoves(row, col, -1, -1, moves, color);
 
 
-    return potentialMoves;
+    return moves;
 }
 
 std::string Bishop::getType() const

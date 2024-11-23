@@ -64,6 +64,21 @@
         "utility": "cpp",
         "format": "cpp",
         "iostream": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "any": "cpp",
+        "condition_variable": "cpp",
+        "forward_list": "cpp",
+        "fstream": "cpp",
+        "istream": "cpp",
+        "regex": "cpp",
+        "set": "cpp",
+        "sstream": "cpp",
+        "unordered_set": "cpp",
+        "valarray": "cpp",
+        "chrono": "cpp",
+        "numeric": "cpp",
+        "shared_mutex": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp"
     }
 }

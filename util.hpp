@@ -2,13 +2,16 @@
 #include <vector>
 #include <stdint.h>
 
+struct Move
+{
+    int col;
+    int row;
 
-struct Move{
-    int x;
-    int y;
-
-    Move(int x, int y) : x(x), y(y) {} // Constructor
-
+    Move(int col, int row) : col(col), row(row) {}
 };
 
-
+enum class Player
+{
+    WHITE,
+    BLACK
+};

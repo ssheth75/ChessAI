@@ -5,9 +5,9 @@
 #include "Board.hpp"
 #include <iostream>
 
-Rook::Rook(const std::string &color, const int xPosition, const int yPosition, const std::string name) : Piece(color, xPosition, yPosition, name)
+Rook::Rook(Player color, const int col, const int row, const std::string name) : Piece(color, col, row, name)
 {
-    std::string textureFile = (color == "white") ? this->whiteGraphic : this->blackGraphic;
+    std::string textureFile = (color == Player::WHITE) ? "assets/wr.png" : "assets/br.png";
 
     if (!texture.loadFromFile(textureFile))
     {
@@ -20,7 +20,7 @@ std::vector<Move> Rook::generateMoves(int col, int row, const Board &board) cons
 {
 
     std::vector<Move> potentialMoves;
-    std::string color = board.grid[col][row]->getColor();
+    Player color = board.m_grid[col][row]->getColor();
 
     // Check left, right, up, down
     board.checkStarMoves(row, col, -1, 0, potentialMoves, color); // Check left

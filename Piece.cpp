@@ -4,7 +4,7 @@
 #include <iostream>
 #include "util.hpp"
 
-Piece::Piece(const std::string &color, const int xPosition, const int yPosition, const std::string name) : color(color), xPosition(xPosition), yPosition(yPosition), name(name) {}
+Piece::Piece(Player color, const int col, const int row, const std::string name) : color(color), col(col), row(row), name(name) {}
 
 
 Piece::~Piece() {}
@@ -29,7 +29,7 @@ void Piece::draw(sf::RenderWindow &window, int x, int y, int squareSize)
     window.draw(sprite);
 }
 
-std::string Piece::getColor()
+Player Piece::getColor()
 {
     return color;
 }
