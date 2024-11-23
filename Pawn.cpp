@@ -2,9 +2,10 @@
 #include <vector>
 #include "util.hpp"
 #include "Pawn.hpp"
+#include "Board.hpp"
 #include <iostream>
 
-Pawn::Pawn(const std::string &color, const int xPosition, const int yPosition) : Piece(color, xPosition, yPosition)
+Pawn::Pawn(const std::string &color, const int xPosition, const int yPosition, const std::string name) : Piece(color, xPosition, yPosition, name)
 {
     std::string textureFile = (color == "white") ? this->whiteGraphic : this->blackGraphic;
 
@@ -15,28 +16,29 @@ Pawn::Pawn(const std::string &color, const int xPosition, const int yPosition) :
     sprite.setTexture(texture); // Set the loaded texture to the sprite
 }
 
-
 // col is first and row is second. col = x; row = y; board uses this and is the same as cartesian
-std::vector<Move> Pawn::generateMoves(int row, int col, const std::vector<std::vector<Piece *>> &grid) const
+std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) const
 {
     std::vector<Move> moves;
+
+    std::string color = board.grid[col][row]->getColor();
 
     // Direction: +1 for black, -1 for white
     int direction = (color == "white") ? -1 : 1;
 
     // Forward Move
-    if (col + direction >= 0 && col + direction < 8 && grid[col + direction][row] == nullptr)
+    if (col + direction >= 0 && col + direction < 8 && board.grid[col + direction][row] == nullptr)
     {
         moves.push_back({col + direction, row}); // Single forward move
 
         // Double Forward Move (only from starting position)
         if ((color == "white" && col == 6) || (color == "black" && col == 1))
         {
-            if (grid[col + 2 * direction][row] == nullptr)
+            if (board.grid[col + 2 * direction][row] == nullptr)
             {
                 moves.push_back({col + (2 * direction), row});
-                std::cout<< col + (2 * direction) << std::endl;
-                std::cout<< row <<std::endl;
+                std::cout << col + (2 * direction) << std::endl;
+                std::cout << row << std::endl;
             }
         }
     }
@@ -44,7 +46,7 @@ std::vector<Move> Pawn::generateMoves(int row, int col, const std::vector<std::v
     // Capture Left
     if (row - 1 >= 0 && col + direction >= 0 && col + direction < 8)
     {
-        Piece *target = grid[col + direction][row - 1];
+        Piece *target = board.grid[col + direction][row - 1];
         if (target != nullptr && target->getColor() != color)
         {
 
@@ -55,20 +57,16 @@ std::vector<Move> Pawn::generateMoves(int row, int col, const std::vector<std::v
     // Capture Right
     if (row + 1 < 8 && col + direction >= 0 && col + direction < 8)
     {
-        Piece *target = grid[col + direction][row + 1];
+        Piece *target = board.grid[col + direction][row + 1];
         if (target != nullptr && target->getColor() != color)
         {
             moves.push_back({col + direction, row + 1}); // Diagonal capture right
         }
     }
 
-
-    // Implement en passant later
-
     return moves;
 
-
-
+    // Implement en passant later
 }
 
 std::string Pawn::getType() const

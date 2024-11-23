@@ -1,23 +1,28 @@
 #ifndef BISHOP_HPP
 #define BISHOP_HPP
 
+#include "util.hpp"
 #include "Piece.hpp"
 #include <vector>
-#include "util.hpp"
 
 class Bishop : public Piece
 {
 public:
-    Bishop(const std::string &color, const int xPosition, const int yPosition);
+    Bishop(const std::string &color, const int xPosition, const int yPosition, const std::string name);
 
     ~Bishop() override = default;
 
-    std::vector<Move> generateMoves(int row, int col, const std::vector<std::vector<Piece *>> &grid) const override;
+    Bishop *clone() const override
+    {
+        return new Bishop(*this); // Copy constructor
+    }
+
+    std::vector<Move> generateMoves(int col, int row, const Board &board) const override;
     std::string getType() const override;
 
 private:
-std::string blackGraphic = "assets/bb.png";
-std::string whiteGraphic = "assets/wb.png";
+    std::string blackGraphic = "assets/bb.png";
+    std::string whiteGraphic = "assets/wb.png";
 };
 
 #endif

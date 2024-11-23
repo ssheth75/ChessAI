@@ -8,11 +8,16 @@
 class Pawn : public Piece
 {
 public:
-    Pawn(const std::string &color, const int xPosition, const int yPosition);
+    Pawn(const std::string &color, const int xPosition, const int yPosition, const std::string name);
+
+    Pawn *clone() const override
+    {
+        return new Pawn(*this); // Copy constructor
+    }
 
     ~Pawn() override = default;
 
-    std::vector<Move> generateMoves(int row, int col, const std::vector<std::vector<Piece *>> &grid) const override;
+    std::vector<Move> generateMoves(int col, int row, const Board &board) const override;
     std::string getType() const override;
 
 private:

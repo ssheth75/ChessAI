@@ -1034,5 +1034,5 @@ CMakeFiles/chessAI.dir/main.cpp.o: /Users/shirvilsheth/ChessAI/main.cpp \
   /opt/homebrew/include/SFML/Graphics/VertexBuffer.hpp \
   /Users/shirvilsheth/ChessAI/Game.hpp \
   /Users/shirvilsheth/ChessAI/Board.hpp \
-  /Users/shirvilsheth/ChessAI/util.hpp \
-  /Users/shirvilsheth/ChessAI/Piece.hpp
+  /Users/shirvilsheth/ChessAI/Piece.hpp \
+  /Users/shirvilsheth/ChessAI/util.hpp

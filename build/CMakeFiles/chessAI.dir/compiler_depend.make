@@ -962,6 +962,7 @@ CMakeFiles/chessAI.dir/Bishop.cpp.o: /Users/shirvilsheth/ChessAI/Bishop.cpp \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
   /Users/shirvilsheth/ChessAI/Bishop.hpp \
+  /Users/shirvilsheth/ChessAI/Board.hpp \
   /Users/shirvilsheth/ChessAI/Piece.hpp \
   /Users/shirvilsheth/ChessAI/util.hpp \
   /opt/homebrew/include/SFML/Config.hpp \
@@ -4088,6 +4089,7 @@ CMakeFiles/chessAI.dir/King.cpp.o: /Users/shirvilsheth/ChessAI/King.cpp \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/shirvilsheth/ChessAI/Board.hpp \
   /Users/shirvilsheth/ChessAI/King.hpp \
   /Users/shirvilsheth/ChessAI/Piece.hpp \
   /Users/shirvilsheth/ChessAI/util.hpp \
@@ -5128,6 +5130,7 @@ CMakeFiles/chessAI.dir/Knight.cpp.o: /Users/shirvilsheth/ChessAI/Knight.cpp \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/shirvilsheth/ChessAI/Board.hpp \
   /Users/shirvilsheth/ChessAI/Knight.hpp \
   /Users/shirvilsheth/ChessAI/Piece.hpp \
   /Users/shirvilsheth/ChessAI/util.hpp \
@@ -6168,6 +6171,7 @@ CMakeFiles/chessAI.dir/Pawn.cpp.o: /Users/shirvilsheth/ChessAI/Pawn.cpp \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/shirvilsheth/ChessAI/Board.hpp \
   /Users/shirvilsheth/ChessAI/Pawn.hpp \
   /Users/shirvilsheth/ChessAI/Piece.hpp \
   /Users/shirvilsheth/ChessAI/util.hpp \
@@ -8247,6 +8251,7 @@ CMakeFiles/chessAI.dir/Queen.cpp.o: /Users/shirvilsheth/ChessAI/Queen.cpp \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/shirvilsheth/ChessAI/Board.hpp \
   /Users/shirvilsheth/ChessAI/Piece.hpp \
   /Users/shirvilsheth/ChessAI/Queen.hpp \
   /Users/shirvilsheth/ChessAI/util.hpp \
@@ -9287,6 +9292,7 @@ CMakeFiles/chessAI.dir/Rook.cpp.o: /Users/shirvilsheth/ChessAI/Rook.cpp \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/shirvilsheth/ChessAI/Board.hpp \
   /Users/shirvilsheth/ChessAI/Piece.hpp \
   /Users/shirvilsheth/ChessAI/Rook.hpp \
   /Users/shirvilsheth/ChessAI/util.hpp \
@@ -10425,8 +10431,6 @@ CMakeFiles/chessAI.dir/main.cpp.o: /Users/shirvilsheth/ChessAI/main.cpp \
 
 /Users/shirvilsheth/ChessAI/King.hpp:
 
-/Users/shirvilsheth/ChessAI/Board.hpp:
-
 /Users/shirvilsheth/ChessAI/Board.cpp:
 
 /opt/homebrew/include/SFML/Window/WindowStyle.hpp:
@@ -10526,6 +10530,8 @@ CMakeFiles/chessAI.dir/main.cpp.o: /Users/shirvilsheth/ChessAI/main.cpp \
 /opt/homebrew/include/SFML/Graphics.hpp:
 
 /Users/shirvilsheth/ChessAI/Piece.hpp:
+
+/Users/shirvilsheth/ChessAI/Board.hpp:
 
 /Users/shirvilsheth/ChessAI/Bishop.hpp:
 

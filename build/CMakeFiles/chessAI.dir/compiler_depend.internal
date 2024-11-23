@@ -963,6 +963,7 @@ CMakeFiles/chessAI.dir/Bishop.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
  /Users/shirvilsheth/ChessAI/Bishop.hpp
+ /Users/shirvilsheth/ChessAI/Board.hpp
  /Users/shirvilsheth/ChessAI/Piece.hpp
  /Users/shirvilsheth/ChessAI/util.hpp
  /opt/homebrew/include/SFML/Config.hpp
@@ -4092,6 +4093,7 @@ CMakeFiles/chessAI.dir/King.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
+ /Users/shirvilsheth/ChessAI/Board.hpp
  /Users/shirvilsheth/ChessAI/King.hpp
  /Users/shirvilsheth/ChessAI/Piece.hpp
  /Users/shirvilsheth/ChessAI/util.hpp
@@ -5133,6 +5135,7 @@ CMakeFiles/chessAI.dir/Knight.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
+ /Users/shirvilsheth/ChessAI/Board.hpp
  /Users/shirvilsheth/ChessAI/Knight.hpp
  /Users/shirvilsheth/ChessAI/Piece.hpp
  /Users/shirvilsheth/ChessAI/util.hpp
@@ -6174,6 +6177,7 @@ CMakeFiles/chessAI.dir/Pawn.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
+ /Users/shirvilsheth/ChessAI/Board.hpp
  /Users/shirvilsheth/ChessAI/Pawn.hpp
  /Users/shirvilsheth/ChessAI/Piece.hpp
  /Users/shirvilsheth/ChessAI/util.hpp
@@ -8255,6 +8259,7 @@ CMakeFiles/chessAI.dir/Queen.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
+ /Users/shirvilsheth/ChessAI/Board.hpp
  /Users/shirvilsheth/ChessAI/Piece.hpp
  /Users/shirvilsheth/ChessAI/Queen.hpp
  /Users/shirvilsheth/ChessAI/util.hpp
@@ -9296,6 +9301,7 @@ CMakeFiles/chessAI.dir/Rook.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
+ /Users/shirvilsheth/ChessAI/Board.hpp
  /Users/shirvilsheth/ChessAI/Piece.hpp
  /Users/shirvilsheth/ChessAI/Rook.hpp
  /Users/shirvilsheth/ChessAI/util.hpp

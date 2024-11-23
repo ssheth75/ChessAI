@@ -1,10 +1,11 @@
+#include "util.hpp"
 #include "Piece.hpp"
 #include <vector>
-#include "util.hpp"
 #include "Rook.hpp"
+#include "Board.hpp"
 #include <iostream>
 
-Rook::Rook(const std::string &color, const int xPosition, const int yPosition) : Piece(color, xPosition, yPosition)
+Rook::Rook(const std::string &color, const int xPosition, const int yPosition, const std::string name) : Piece(color, xPosition, yPosition, name)
 {
     std::string textureFile = (color == "white") ? this->whiteGraphic : this->blackGraphic;
 
@@ -15,20 +16,21 @@ Rook::Rook(const std::string &color, const int xPosition, const int yPosition) :
     sprite.setTexture(texture); // Set the loaded texture to the sprite
 }
 
-
-
-std::vector<Move> Rook::generateMoves(int row, int col, const std::vector<std::vector<Piece *>> &grid) const
+std::vector<Move> Rook::generateMoves(int col, int row, const Board &board) const
 {
-    std::vector<Move> moves;
 
-    std::string color = grid[col][row]->getColor();
+    std::vector<Move> potentialMoves;
+    std::string color = board.grid[col][row]->getColor();
 
-    checkAdjacentMoves(row, col, -1, 0, moves, grid, color); // Check left
-    checkAdjacentMoves(row, col, 1, 0, moves, grid, color);  // Check right
-    checkAdjacentMoves(row, col, 0, 1, moves, grid, color);  // Check above
-    checkAdjacentMoves(row, col, 0, -1, moves, grid, color); // Check below
+    // Check left, right, up, down
+    board.checkStarMoves(row, col, -1, 0, potentialMoves, color); // Check left
+    board.checkStarMoves(row, col, 1, 0, potentialMoves, color);  // Check right
+    board.checkStarMoves(row, col, 0, 1, potentialMoves, color);  // Check above
+    board.checkStarMoves(row, col, 0, -1, potentialMoves, color); // Check below
 
-    return moves;
+    // add castling
+
+    return potentialMoves;
 }
 
 std::string Rook::getType() const

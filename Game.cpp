@@ -9,16 +9,20 @@ Game::Game()
 
 void Game::run()
 {
-    // Initial render before entering the event loop
+    // Initial render
     window.clear(sf::Color::White);
-    board.draw(window); // Draws the initial board
+    board.draw(window); // Draw the initial board
     window.display();
-    bool turn = true; // white, black = false
 
+    bool turn = true; // true = white's turn, false = black's turn
+
+    sf::Event event;
+
+    // Main event-driven loop
     while (window.isOpen())
     {
-        sf::Event event;
-        while (window.pollEvent(event))
+        // Wait for an event
+        if (window.waitEvent(event))
         {
             if (event.type == sf::Event::Closed)
             {
@@ -26,19 +30,20 @@ void Game::run()
             }
             else if (event.type == sf::Event::MouseButtonPressed)
             {
-                // Handle other events
+                // Handle click events
                 int x = event.mouseButton.x; // X-coordinate of the mouse click
                 int y = event.mouseButton.y; // Y-coordinate of the mouse click
                 handleClick(x, y, turn);
 
                 // Render after processing the event
                 window.clear(sf::Color::White);
-                board.draw(window); // Draws the board with pieces
+                board.draw(window); // Draw the board with pieces
                 window.display();
             }
         }
     }
 }
+
 
 void Game::handleClick(const int x, const int y, bool &turn)
 {
@@ -86,10 +91,9 @@ void Game::handleClick(const int x, const int y, bool &turn)
     if (piece && piece->getColor() == (turn ? "white" : "black"))
     {
         selectedPiece = piece;
-
         // Generate valid moves
-        board.highlightedMoves = piece->generateMoves(row, col, board.grid);
-
+        auto allMoves = piece->generateMoves(col, row, board);
+        board.highlightedMoves = board.validatedMoves(allMoves, piece);
 
         // Log the moves for debugging
         std::cout << "Valid moves for " << piece->getType() << " at (" << row << ", " << col << "):" << std::endl;
@@ -98,6 +102,4 @@ void Game::handleClick(const int x, const int y, bool &turn)
             std::cout << "(" << move.x << ", " << move.y << ")" << std::endl;
         }
     }
-
-
 }

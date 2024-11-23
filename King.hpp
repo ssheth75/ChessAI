@@ -8,16 +8,21 @@
 class King : public Piece
 {
 public:
-    King(const std::string &color, const int xPosition, const int yPosition);
+    King(const std::string &color, const int xPosition, const int yPosition, const std::string name);
+
+    King *clone() const override
+    {
+        return new King(*this); // Copy constructor
+    }
 
     ~King() override = default;
 
-    std::vector<Move> generateMoves(int row, int col, const std::vector<std::vector<Piece *>> &grid) const override;
+    std::vector<Move> generateMoves(int col, int row, const Board &board) const override;
     std::string getType() const override;
 
 private:
-std::string blackGraphic = "assets/bk.png";
-std::string whiteGraphic = "assets/wk.png";
+    std::string blackGraphic = "assets/bk.png";
+    std::string whiteGraphic = "assets/wk.png";
 };
 
 #endif

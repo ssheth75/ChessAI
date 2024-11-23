@@ -1,16 +1,18 @@
 #include <string>
 #include <vector>
-#include "util.hpp"
 #include "Piece.hpp"
 #include <iostream>
+#include "util.hpp"
 
+Piece::Piece(const std::string &color, const int xPosition, const int yPosition, const std::string name) : color(color), xPosition(xPosition), yPosition(yPosition), name(name) {}
 
-Piece::Piece(const std::string& color, int xPosition, int yPosition) : color(color), xPosition(xPosition), yPosition(yPosition) {}
 
 Piece::~Piece() {}
 
-void Piece::draw(sf::RenderWindow& window, int x, int y, int squareSize) {
-    if (!sprite.getTexture()) {
+void Piece::draw(sf::RenderWindow &window, int x, int y, int squareSize)
+{
+    if (!sprite.getTexture())
+    {
         std::cout << "Sprite has no texture set!\n";
         return;
     }
@@ -27,6 +29,7 @@ void Piece::draw(sf::RenderWindow& window, int x, int y, int squareSize) {
     window.draw(sprite);
 }
 
-std::string Piece::getColor(){
+std::string Piece::getColor()
+{
     return color;
 }
