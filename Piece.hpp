@@ -13,14 +13,11 @@ class Piece;
 struct Move
 {
     Piece *piece;
-
     int endCol;
     int endRow;
-    bool enPassantMove = false;
-    bool castle = false;
-    bool normalMove = false;
+    MoveType moveType;
 
-    Move(Piece *piece, int endCol, int endRow, bool enPassantMove, bool castle, bool normalMove) : piece(piece), endCol(endCol), endRow(endRow), enPassantMove(enPassantMove), castle(castle), normalMove(normalMove) {}
+    Move(Piece *piece, int endCol, int endRow, MoveType moveType) : piece(piece), endCol(endCol), endRow(endRow), moveType(moveType) {}
 };
 
 class Piece

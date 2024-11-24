@@ -66,7 +66,7 @@ void Game::handleClick(const int x, const int y, bool &turn)
             if (validMove.endCol == col && validMove.endRow == row)
             {
                 // Make the move
-                Move move(selectedPiece, validMove.endCol, validMove.endRow, validMove.enPassantMove, validMove.castle, validMove.normalMove);
+                Move move(selectedPiece, validMove.endCol, validMove.endRow, validMove.moveType);
                 board.makeMove(move);
 
                 // Clear the selected piece and highlighted moves

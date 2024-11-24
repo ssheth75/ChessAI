@@ -43,14 +43,14 @@ public:
     void checkStarMoves(int startRow, int startCol, int rowStep, int colStep,
                         std::vector<Move> &moves, Player color) const; // Check specific moves
     std::vector<Move> validatedMoves(std::vector<Move> potentialMoves);
-    void draw(sf::RenderWindow &window);
-    
+    void draw(sf::RenderWindow &window); // Draw the board and pieces
+
     bool squareUnderAttack(int col, int row, Player color) const; // Check if a piece is under attack. takes in friendly color
     Move rookCastleMove(Move move);
 
-        // Public Member Variables
-        bool m_movesHighlighted = false; // Tracks if moves are highlighted
-    std::vector<Move> m_validMoves;      // Valid moves for the selected piece
+    // Public Member Variables
+    bool m_movesHighlighted = false; // Tracks if moves are highlighted
+    std::vector<Move> m_validMoves;  // Valid moves for the selected piece
     std::vector<std::vector<Piece *>> m_grid;
     std::unordered_map<std::string, Piece *> m_whitePieces; // White pieces map
     std::unordered_map<std::string, Piece *> m_blackPieces; // 2D grid of piece pointers
@@ -74,8 +74,7 @@ private:
     void undo(const MoveState &state);                // Undo a move
     void updateKingPosition(Piece *king, int col, int row);
 
-                                                      // Draw the board and pieces
-    void handleClick(int mouseX, int mouseY);         // Handle mouse clicks
+    void handleClick(int mouseX, int mouseY); // Handle mouse clicks
 };
 
 #endif

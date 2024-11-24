@@ -16,7 +16,7 @@ King::King(Player color, const int col, const int row, const std::string name) :
     sprite.setTexture(texture); // Set the loaded texture to the sprite
 }
 
-void checkCastling(Piece* king, int col, int row, const Board& board, std::vector<Move>& moves)
+void checkCastling(Piece *king, int col, int row, const Board &board, std::vector<Move> &moves)
 {
     // Array for king-side and queen-side castling offsets
     const std::vector<std::pair<int, int>> castlingOffsets = {
@@ -26,14 +26,14 @@ void checkCastling(Piece* king, int col, int row, const Board& board, std::vecto
 
     if (!king->hasMoved())
     {
-        for (const auto& [rookOffset, kingMoveOffset] : castlingOffsets)
+        for (const auto &[rookOffset, kingMoveOffset] : castlingOffsets)
         {
-            int rookCol = col;              // Rook is on the same row as the king
-            int rookRow = row + rookOffset; // Calculate rook position
+            int rookCol = col;                      // Rook is on the same row as the king
+            int rookRow = row + rookOffset;         // Calculate rook position
             int kingDestRow = row + kingMoveOffset; // King's destination after castling
 
             // Ensure the rook exists and hasn't moved
-            if (rookRow >= 0 && rookRow < 8 && 
+            if (rookRow >= 0 && rookRow < 8 &&
                 board.m_grid[rookCol][rookRow] != nullptr &&
                 board.m_grid[rookCol][rookRow]->getType() == "Rook" &&
                 !board.m_grid[rookCol][rookRow]->hasMoved())
@@ -51,20 +51,15 @@ void checkCastling(Piece* king, int col, int row, const Board& board, std::vecto
                 }
 
                 // Check that the king does not pass through or land on attacked squares
-                if (clearPath //&&
-                    // !board.squareUnderAttack(col, row) && // Current position // redundant actually keep for now
-                    // !board.squareUnderAttack(col, row + step) &&
-                    // !board.squareUnderAttack(col, kingDestRow))
-                )
+                if (clearPath)
                 {
                     // Add castling move
-                    moves.push_back({king, col, kingDestRow, false, true, false}); //castling move
+                    moves.push_back({king, col, kingDestRow, MoveType::CASTLE}); 
                 }
             }
         }
     }
 }
-
 
 std::vector<Move> King::generateMoves(int col, int row, const Board &board) const
 {
@@ -96,7 +91,7 @@ std::vector<Move> King::generateMoves(int col, int row, const Board &board) cons
             Piece *target = board.m_grid[newCol][newRow];
             if (target == nullptr || target->getColor() != color) // Empty or opponent's piece
             {
-                moves.push_back({king, newCol, newRow, false, false, true}); //normal move
+                moves.push_back({king, newCol, newRow, MoveType::NORMAL}); // normal move
             }
         }
     }

@@ -16,7 +16,7 @@ Board::Board() : m_whiteKing(7, 4), m_blackKing(0, 4)
 // input: move = [col,row]
 void Board::makeMove(Move move)
 {
-    if (move.castle)
+    if (move.moveType == MoveType::CASTLE)
     {
         this->move(move); // Move the king
         auto rookMove = rookCastleMove(move); // Get the rook's move
@@ -25,7 +25,7 @@ void Board::makeMove(Move move)
         // Update king's position
         updateKingPosition(move.piece, move.endCol, move.endRow);
     }
-    else if (move.normalMove)
+    else if (move.moveType == MoveType::NORMAL)
     {
         // move capture
         if (m_grid[move.endCol][move.endRow] != nullptr && 
@@ -41,6 +41,10 @@ void Board::makeMove(Move move)
         // Update king's position if the moved piece is a king
         updateKingPosition(move.piece, move.endCol, move.endRow);
     }
+
+    // add pawn promotion
+    // add en passant
+
     move.piece->setMoved(true);
 }
 
@@ -86,13 +90,13 @@ void Board::checkStarMoves(int startRow, int startCol, int rowStep, int colStep,
     {
         if (m_grid[currentCol][currentRow] == nullptr)
         {
-            moves.push_back({this->m_grid[startCol][startRow], currentCol, currentRow, false, false, true}); // normal move
+            moves.push_back({this->m_grid[startCol][startRow], currentCol, currentRow, MoveType::NORMAL}); // normal move
             currentRow += rowStep;
             currentCol += colStep;
         }
         else if (m_grid[currentCol][currentRow]->getColor() != color)
         {
-            moves.push_back({this->m_grid[startCol][startRow], currentCol, currentRow, false, false, true}); // normal move
+            moves.push_back({this->m_grid[startCol][startRow], currentCol, currentRow, MoveType::NORMAL}); // normal move
             break;
         }
         else
@@ -211,13 +215,12 @@ std::vector<Move> Board::validatedMoves(std::vector<Move> potentialMoves)
         // then check if it is in check.
         // if not then add the king move to valid positions
         // undo both moves
-        // for castling this function only checks if the final state is a check state after castling
+        // for castling this function only checks if the final state is a check state after 
+        // castling and if the path is safe
         // in generate() we will check if there is a path to castle
-        // if all squares are safe
-        // and if the current state is a check
         // and that neither the pieces have moved
 
-        if (move.castle)
+        if (move.moveType == MoveType::CASTLE)
         {
             // Map king's castling destinations to rook path squares for validation
             const std::map<std::pair<int, int>, std::vector<std::pair<int, int>>> castlePaths = {
@@ -262,7 +265,6 @@ std::vector<Move> Board::validatedMoves(std::vector<Move> potentialMoves)
 
         else
         {
-
             auto undoState = this->move(move);
 
             // Check if king is = in check
@@ -285,32 +287,32 @@ Move Board::rookCastleMove(Move move)
         // top right rook
         auto rook = this->m_grid[0][7];
         // rook ends up at
-        return Move(rook, 0, 5, false, true, false);
+        return Move(rook, 0, 5, MoveType::CASTLE);
     }
     else if (move.endCol == 0 && move.endRow == 2)
     {
         // top left rook
         auto rook = this->m_grid[0][0];
         // rook ends up at
-        return Move(rook, 0, 3, false, true, false);
+        return Move(rook, 0, 3, MoveType::CASTLE);
     }
     else if (move.endCol == 7 && move.endRow == 2)
     {
         // bottom left rook
         auto rook = this->m_grid[7][0];
         // rook ends up at
-        return Move(rook, 7, 3, false, true, false);
+        return Move(rook, 7, 3, MoveType::CASTLE);
     }
     else if (move.endCol == 7 && move.endRow == 6)
     {
         // bottom right rook
         auto rook = this->m_grid[7][7];
         // rook ends up at
-        return Move(rook, 7, 5, false, true, false);
+        return Move(rook, 7, 5, MoveType::CASTLE);
     }
 
     std::cout << "error in rookCastleMove()" << std::endl;
-    return Move(nullptr, -1, -1, false, false, false);
+    return Move(nullptr, -1, -1, MoveType::CASTLE);
 }
 
 bool Board::inCheck(Player color)

@@ -30,14 +30,14 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
     // Forward Move
     if (col + direction >= 0 && col + direction < 8 && board.m_grid[col + direction][row] == nullptr)
     {
-        moves.push_back({piece, col + direction, row, false, false, true}); // Single forward move
+        moves.push_back({piece, col + direction, row, MoveType::NORMAL}); // Single forward move
 
         // Double Forward Move (only from starting position)
         if ((color == Player::WHITE && col == 6) || (color == Player::BLACK && col == 1))
         {
             if (board.m_grid[col + 2 * direction][row] == nullptr)
             {
-                moves.push_back({piece, col + (2 * direction), row, false, false, true});
+                moves.push_back({piece, col + (2 * direction), row, MoveType::NORMAL});
                 // std::cout << col + (2 * direction) << std::endl;
                 // std::cout << row << std::endl;
             }
@@ -51,7 +51,7 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
         if (target != nullptr && target->getColor() != color)
         {
 
-            moves.push_back({piece, col + direction, row - 1, false, false, true}); // Diagonal capture left
+            moves.push_back({piece, col + direction, row - 1, MoveType::NORMAL}); // Diagonal capture left
         }
     }
 
@@ -61,7 +61,7 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
         Piece *target = board.m_grid[col + direction][row + 1];
         if (target != nullptr && target->getColor() != color)
         {
-            moves.push_back({piece, col + direction, row + 1, false, false, true}); // Diagonal capture right
+            moves.push_back({piece, col + direction, row + 1, MoveType::NORMAL}); // Diagonal capture right
         }
     }
 

@@ -43,7 +43,7 @@ std::vector<Move> Knight::generateMoves(int col, int row, const Board &board) co
             Piece *target = board.m_grid[newCol][newRow];
             if (target == nullptr || target->getColor() != color) // Empty or opponent's piece
             {
-                moves.push_back({piece, newCol, newRow, false, false, true}); //normal move
+                moves.push_back({piece, newCol, newRow, MoveType::NORMAL}); //normal move
             }
         }
     }
