@@ -8,6 +8,21 @@
 
 class Board;
 
+class Piece;
+
+struct Move
+{
+    Piece *piece;
+
+    int endCol;
+    int endRow;
+    bool enPassantMove = false;
+    bool castle = false;
+    bool normalMove = false;
+
+    Move(Piece *piece, int endCol, int endRow, bool enPassantMove, bool castle, bool normalMove) : piece(piece), endCol(endCol), endRow(endRow), enPassantMove(enPassantMove), castle(castle), normalMove(normalMove) {}
+};
+
 class Piece
 {
 public:
@@ -22,6 +37,10 @@ public:
     virtual std::string getType() const = 0; // Pure virtual function
 
     virtual void draw(sf::RenderWindow &window, int x, int y, int squareSize);
+
+    virtual bool hasMoved() const { return false; } // Default implementation for other pieces
+
+    virtual void setMoved(bool moved) {}
 
     Player getColor();
 

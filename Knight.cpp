@@ -19,7 +19,8 @@ Knight::Knight(Player color, const int col, const int row, const std::string nam
 std::vector<Move> Knight::generateMoves(int col, int row, const Board &board) const
 {
     std::vector<Move> moves;
-    Player color = board.m_grid[col][row]->getColor();
+    auto piece = board.m_grid[col][row];
+    Player color = piece->getColor();
 
     // All possible moves for a knight
     std::vector<std::pair<int, int>> knightMoves = {
@@ -42,7 +43,7 @@ std::vector<Move> Knight::generateMoves(int col, int row, const Board &board) co
             Piece *target = board.m_grid[newCol][newRow];
             if (target == nullptr || target->getColor() != color) // Empty or opponent's piece
             {
-                moves.push_back({newCol, newRow});
+                moves.push_back({piece, newCol, newRow, false, false, true}); //normal move
             }
         }
     }

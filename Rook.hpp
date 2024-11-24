@@ -12,10 +12,15 @@ public:
 
     Rook *clone() const override
     {
-        return new Rook(*this); 
+        return new Rook(*this);
     }
 
     ~Rook() override = default;
+
+    bool hasMoved() const override { return moved; }
+    void setMoved(bool moved) override { this->moved = moved; }
+
+    bool moved = false;
 
 private:
     std::vector<Move> generateMoves(int col, int row, const Board &board) const override;

@@ -61,12 +61,13 @@ void Game::handleClick(const int x, const int y, bool &turn)
     if (selectedPiece)
     {
         // Check if the clicked square is a valid move
-        for (const Move &move : board.m_validMoves)
+        for (const Move &validMove : board.m_validMoves)
         {
-            if (move.col == col && move.row == row)
+            if (validMove.endCol == col && validMove.endRow == row)
             {
                 // Make the move
-                board.makeMove(selectedPiece, move);
+                Move move(selectedPiece, validMove.endCol, validMove.endRow, validMove.enPassantMove, validMove.castle, validMove.normalMove);
+                board.makeMove(move);
 
                 // Clear the selected piece and highlighted moves
                 selectedPiece = nullptr;
@@ -93,13 +94,13 @@ void Game::handleClick(const int x, const int y, bool &turn)
         selectedPiece = piece;
         // Generate valid moves
         auto allMoves = piece->generateMoves(col, row, board);
-        board.m_validMoves = board.validatedMoves(allMoves, piece);
+        board.m_validMoves = board.validatedMoves(allMoves);
 
         // Log the moves for debugging
         std::cout << "Valid moves for " << piece->getType() << " at (" << row << ", " << col << "):" << std::endl;
         for (const Move &move : board.m_validMoves)
         {
-            std::cout << "(" << move.col << ", " << move.row << ")" << std::endl;
+            std::cout << "(" << move.endCol << ", " << move.endRow << ")" << std::endl;
         }
     }
 }

@@ -25,19 +25,21 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
     // Direction: +1 for black, -1 for white
     int direction = (color == Player::WHITE) ? -1 : 1;
 
+    auto piece = board.m_grid[col][row];
+
     // Forward Move
     if (col + direction >= 0 && col + direction < 8 && board.m_grid[col + direction][row] == nullptr)
     {
-        moves.push_back({col + direction, row}); // Single forward move
+        moves.push_back({piece, col + direction, row, false, false, true}); // Single forward move
 
         // Double Forward Move (only from starting position)
         if ((color == Player::WHITE && col == 6) || (color == Player::BLACK && col == 1))
         {
             if (board.m_grid[col + 2 * direction][row] == nullptr)
             {
-                moves.push_back({col + (2 * direction), row});
-                std::cout << col + (2 * direction) << std::endl;
-                std::cout << row << std::endl;
+                moves.push_back({piece, col + (2 * direction), row, false, false, true});
+                // std::cout << col + (2 * direction) << std::endl;
+                // std::cout << row << std::endl;
             }
         }
     }
@@ -49,7 +51,7 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
         if (target != nullptr && target->getColor() != color)
         {
 
-            moves.push_back({col + direction, row - 1}); // Diagonal capture left
+            moves.push_back({piece, col + direction, row - 1, false, false, true}); // Diagonal capture left
         }
     }
 
@@ -59,7 +61,7 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
         Piece *target = board.m_grid[col + direction][row + 1];
         if (target != nullptr && target->getColor() != color)
         {
-            moves.push_back({col + direction, row + 1}); // Diagonal capture right
+            moves.push_back({piece, col + direction, row + 1, false, false, true}); // Diagonal capture right
         }
     }
 

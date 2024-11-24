@@ -16,10 +16,61 @@ King::King(Player color, const int col, const int row, const std::string name) :
     sprite.setTexture(texture); // Set the loaded texture to the sprite
 }
 
+void checkCastling(Piece* king, int col, int row, const Board& board, std::vector<Move>& moves)
+{
+    // Array for king-side and queen-side castling offsets
+    const std::vector<std::pair<int, int>> castlingOffsets = {
+        {3, 2},  // King-side: Rook is 3 squares away, king moves 2 squares
+        {-4, -2} // Queen-side: Rook is 4 squares away, king moves 2 squares
+    };
+
+    if (!king->hasMoved())
+    {
+        for (const auto& [rookOffset, kingMoveOffset] : castlingOffsets)
+        {
+            int rookCol = col;              // Rook is on the same row as the king
+            int rookRow = row + rookOffset; // Calculate rook position
+            int kingDestRow = row + kingMoveOffset; // King's destination after castling
+
+            // Ensure the rook exists and hasn't moved
+            if (rookRow >= 0 && rookRow < 8 && 
+                board.m_grid[rookCol][rookRow] != nullptr &&
+                board.m_grid[rookCol][rookRow]->getType() == "Rook" &&
+                !board.m_grid[rookCol][rookRow]->hasMoved())
+            {
+                // Check the path between the king and the rook
+                bool clearPath = true;
+                int step = (rookOffset > 0) ? 1 : -1;
+                for (int i = 1; i < abs(rookOffset); ++i)
+                {
+                    if (board.m_grid[col][row + step * i] != nullptr)
+                    {
+                        clearPath = false;
+                        break;
+                    }
+                }
+
+                // Check that the king does not pass through or land on attacked squares
+                if (clearPath //&&
+                    // !board.squareUnderAttack(col, row) && // Current position // redundant actually keep for now
+                    // !board.squareUnderAttack(col, row + step) &&
+                    // !board.squareUnderAttack(col, kingDestRow))
+                )
+                {
+                    // Add castling move
+                    moves.push_back({king, col, kingDestRow, false, true, false}); //castling move
+                }
+            }
+        }
+    }
+}
+
+
 std::vector<Move> King::generateMoves(int col, int row, const Board &board) const
 {
     std::vector<Move> moves;
-    Player color = board.m_grid[col][row]->getColor();
+    auto king = board.m_grid[col][row];
+    Player color = king->getColor();
 
     // Possible directions the king can move
     std::vector<std::pair<int, int>> directions = {
@@ -45,12 +96,16 @@ std::vector<Move> King::generateMoves(int col, int row, const Board &board) cons
             Piece *target = board.m_grid[newCol][newRow];
             if (target == nullptr || target->getColor() != color) // Empty or opponent's piece
             {
-                moves.push_back({newCol, newRow});
+                moves.push_back({king, newCol, newRow, false, false, true}); //normal move
             }
         }
     }
 
-    // Add castling later
+    // Castling
+
+    const auto &pieces = (color == Player::BLACK ? board.m_blackPieces : board.m_whitePieces);
+
+    checkCastling(king, col, row, board, moves);
 
     return moves;
 }
