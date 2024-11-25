@@ -72,172 +72,172 @@ include CMakeFiles/chessAI.dir/flags.make
 CMakeFiles/chessAI.dir/codegen:
 .PHONY : CMakeFiles/chessAI.dir/codegen
 
-CMakeFiles/chessAI.dir/main.cpp.o: CMakeFiles/chessAI.dir/flags.make
-CMakeFiles/chessAI.dir/main.cpp.o: /Users/shirvilsheth/ChessAI/main.cpp
-CMakeFiles/chessAI.dir/main.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/chessAI.dir/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/main.cpp.o -MF CMakeFiles/chessAI.dir/main.cpp.o.d -o CMakeFiles/chessAI.dir/main.cpp.o -c /Users/shirvilsheth/ChessAI/main.cpp
+CMakeFiles/chessAI.dir/src/main.cpp.o: CMakeFiles/chessAI.dir/flags.make
+CMakeFiles/chessAI.dir/src/main.cpp.o: /Users/shirvilsheth/ChessAI/src/main.cpp
+CMakeFiles/chessAI.dir/src/main.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/chessAI.dir/src/main.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/src/main.cpp.o -MF CMakeFiles/chessAI.dir/src/main.cpp.o.d -o CMakeFiles/chessAI.dir/src/main.cpp.o -c /Users/shirvilsheth/ChessAI/src/main.cpp
 
-CMakeFiles/chessAI.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/main.cpp > CMakeFiles/chessAI.dir/main.cpp.i
+CMakeFiles/chessAI.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/src/main.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/src/main.cpp > CMakeFiles/chessAI.dir/src/main.cpp.i
 
-CMakeFiles/chessAI.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/main.cpp -o CMakeFiles/chessAI.dir/main.cpp.s
+CMakeFiles/chessAI.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/src/main.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/src/main.cpp -o CMakeFiles/chessAI.dir/src/main.cpp.s
 
-CMakeFiles/chessAI.dir/Game.cpp.o: CMakeFiles/chessAI.dir/flags.make
-CMakeFiles/chessAI.dir/Game.cpp.o: /Users/shirvilsheth/ChessAI/Game.cpp
-CMakeFiles/chessAI.dir/Game.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/chessAI.dir/Game.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/Game.cpp.o -MF CMakeFiles/chessAI.dir/Game.cpp.o.d -o CMakeFiles/chessAI.dir/Game.cpp.o -c /Users/shirvilsheth/ChessAI/Game.cpp
+CMakeFiles/chessAI.dir/src/Game.cpp.o: CMakeFiles/chessAI.dir/flags.make
+CMakeFiles/chessAI.dir/src/Game.cpp.o: /Users/shirvilsheth/ChessAI/src/Game.cpp
+CMakeFiles/chessAI.dir/src/Game.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/chessAI.dir/src/Game.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/src/Game.cpp.o -MF CMakeFiles/chessAI.dir/src/Game.cpp.o.d -o CMakeFiles/chessAI.dir/src/Game.cpp.o -c /Users/shirvilsheth/ChessAI/src/Game.cpp
 
-CMakeFiles/chessAI.dir/Game.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/Game.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/Game.cpp > CMakeFiles/chessAI.dir/Game.cpp.i
+CMakeFiles/chessAI.dir/src/Game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/src/Game.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/src/Game.cpp > CMakeFiles/chessAI.dir/src/Game.cpp.i
 
-CMakeFiles/chessAI.dir/Game.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/Game.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/Game.cpp -o CMakeFiles/chessAI.dir/Game.cpp.s
+CMakeFiles/chessAI.dir/src/Game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/src/Game.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/src/Game.cpp -o CMakeFiles/chessAI.dir/src/Game.cpp.s
 
-CMakeFiles/chessAI.dir/Board.cpp.o: CMakeFiles/chessAI.dir/flags.make
-CMakeFiles/chessAI.dir/Board.cpp.o: /Users/shirvilsheth/ChessAI/Board.cpp
-CMakeFiles/chessAI.dir/Board.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/chessAI.dir/Board.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/Board.cpp.o -MF CMakeFiles/chessAI.dir/Board.cpp.o.d -o CMakeFiles/chessAI.dir/Board.cpp.o -c /Users/shirvilsheth/ChessAI/Board.cpp
+CMakeFiles/chessAI.dir/src/Board.cpp.o: CMakeFiles/chessAI.dir/flags.make
+CMakeFiles/chessAI.dir/src/Board.cpp.o: /Users/shirvilsheth/ChessAI/src/Board.cpp
+CMakeFiles/chessAI.dir/src/Board.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/chessAI.dir/src/Board.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/src/Board.cpp.o -MF CMakeFiles/chessAI.dir/src/Board.cpp.o.d -o CMakeFiles/chessAI.dir/src/Board.cpp.o -c /Users/shirvilsheth/ChessAI/src/Board.cpp
 
-CMakeFiles/chessAI.dir/Board.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/Board.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/Board.cpp > CMakeFiles/chessAI.dir/Board.cpp.i
+CMakeFiles/chessAI.dir/src/Board.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/src/Board.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/src/Board.cpp > CMakeFiles/chessAI.dir/src/Board.cpp.i
 
-CMakeFiles/chessAI.dir/Board.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/Board.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/Board.cpp -o CMakeFiles/chessAI.dir/Board.cpp.s
+CMakeFiles/chessAI.dir/src/Board.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/src/Board.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/src/Board.cpp -o CMakeFiles/chessAI.dir/src/Board.cpp.s
 
-CMakeFiles/chessAI.dir/Pawn.cpp.o: CMakeFiles/chessAI.dir/flags.make
-CMakeFiles/chessAI.dir/Pawn.cpp.o: /Users/shirvilsheth/ChessAI/Pawn.cpp
-CMakeFiles/chessAI.dir/Pawn.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/chessAI.dir/Pawn.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/Pawn.cpp.o -MF CMakeFiles/chessAI.dir/Pawn.cpp.o.d -o CMakeFiles/chessAI.dir/Pawn.cpp.o -c /Users/shirvilsheth/ChessAI/Pawn.cpp
+CMakeFiles/chessAI.dir/src/Pawn.cpp.o: CMakeFiles/chessAI.dir/flags.make
+CMakeFiles/chessAI.dir/src/Pawn.cpp.o: /Users/shirvilsheth/ChessAI/src/Pawn.cpp
+CMakeFiles/chessAI.dir/src/Pawn.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/chessAI.dir/src/Pawn.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/src/Pawn.cpp.o -MF CMakeFiles/chessAI.dir/src/Pawn.cpp.o.d -o CMakeFiles/chessAI.dir/src/Pawn.cpp.o -c /Users/shirvilsheth/ChessAI/src/Pawn.cpp
 
-CMakeFiles/chessAI.dir/Pawn.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/Pawn.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/Pawn.cpp > CMakeFiles/chessAI.dir/Pawn.cpp.i
+CMakeFiles/chessAI.dir/src/Pawn.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/src/Pawn.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/src/Pawn.cpp > CMakeFiles/chessAI.dir/src/Pawn.cpp.i
 
-CMakeFiles/chessAI.dir/Pawn.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/Pawn.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/Pawn.cpp -o CMakeFiles/chessAI.dir/Pawn.cpp.s
+CMakeFiles/chessAI.dir/src/Pawn.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/src/Pawn.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/src/Pawn.cpp -o CMakeFiles/chessAI.dir/src/Pawn.cpp.s
 
-CMakeFiles/chessAI.dir/Piece.cpp.o: CMakeFiles/chessAI.dir/flags.make
-CMakeFiles/chessAI.dir/Piece.cpp.o: /Users/shirvilsheth/ChessAI/Piece.cpp
-CMakeFiles/chessAI.dir/Piece.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/chessAI.dir/Piece.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/Piece.cpp.o -MF CMakeFiles/chessAI.dir/Piece.cpp.o.d -o CMakeFiles/chessAI.dir/Piece.cpp.o -c /Users/shirvilsheth/ChessAI/Piece.cpp
+CMakeFiles/chessAI.dir/src/Piece.cpp.o: CMakeFiles/chessAI.dir/flags.make
+CMakeFiles/chessAI.dir/src/Piece.cpp.o: /Users/shirvilsheth/ChessAI/src/Piece.cpp
+CMakeFiles/chessAI.dir/src/Piece.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/chessAI.dir/src/Piece.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/src/Piece.cpp.o -MF CMakeFiles/chessAI.dir/src/Piece.cpp.o.d -o CMakeFiles/chessAI.dir/src/Piece.cpp.o -c /Users/shirvilsheth/ChessAI/src/Piece.cpp
 
-CMakeFiles/chessAI.dir/Piece.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/Piece.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/Piece.cpp > CMakeFiles/chessAI.dir/Piece.cpp.i
+CMakeFiles/chessAI.dir/src/Piece.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/src/Piece.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/src/Piece.cpp > CMakeFiles/chessAI.dir/src/Piece.cpp.i
 
-CMakeFiles/chessAI.dir/Piece.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/Piece.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/Piece.cpp -o CMakeFiles/chessAI.dir/Piece.cpp.s
+CMakeFiles/chessAI.dir/src/Piece.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/src/Piece.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/src/Piece.cpp -o CMakeFiles/chessAI.dir/src/Piece.cpp.s
 
-CMakeFiles/chessAI.dir/Rook.cpp.o: CMakeFiles/chessAI.dir/flags.make
-CMakeFiles/chessAI.dir/Rook.cpp.o: /Users/shirvilsheth/ChessAI/Rook.cpp
-CMakeFiles/chessAI.dir/Rook.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/chessAI.dir/Rook.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/Rook.cpp.o -MF CMakeFiles/chessAI.dir/Rook.cpp.o.d -o CMakeFiles/chessAI.dir/Rook.cpp.o -c /Users/shirvilsheth/ChessAI/Rook.cpp
+CMakeFiles/chessAI.dir/src/Rook.cpp.o: CMakeFiles/chessAI.dir/flags.make
+CMakeFiles/chessAI.dir/src/Rook.cpp.o: /Users/shirvilsheth/ChessAI/src/Rook.cpp
+CMakeFiles/chessAI.dir/src/Rook.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/chessAI.dir/src/Rook.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/src/Rook.cpp.o -MF CMakeFiles/chessAI.dir/src/Rook.cpp.o.d -o CMakeFiles/chessAI.dir/src/Rook.cpp.o -c /Users/shirvilsheth/ChessAI/src/Rook.cpp
 
-CMakeFiles/chessAI.dir/Rook.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/Rook.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/Rook.cpp > CMakeFiles/chessAI.dir/Rook.cpp.i
+CMakeFiles/chessAI.dir/src/Rook.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/src/Rook.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/src/Rook.cpp > CMakeFiles/chessAI.dir/src/Rook.cpp.i
 
-CMakeFiles/chessAI.dir/Rook.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/Rook.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/Rook.cpp -o CMakeFiles/chessAI.dir/Rook.cpp.s
+CMakeFiles/chessAI.dir/src/Rook.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/src/Rook.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/src/Rook.cpp -o CMakeFiles/chessAI.dir/src/Rook.cpp.s
 
-CMakeFiles/chessAI.dir/Bishop.cpp.o: CMakeFiles/chessAI.dir/flags.make
-CMakeFiles/chessAI.dir/Bishop.cpp.o: /Users/shirvilsheth/ChessAI/Bishop.cpp
-CMakeFiles/chessAI.dir/Bishop.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/chessAI.dir/Bishop.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/Bishop.cpp.o -MF CMakeFiles/chessAI.dir/Bishop.cpp.o.d -o CMakeFiles/chessAI.dir/Bishop.cpp.o -c /Users/shirvilsheth/ChessAI/Bishop.cpp
+CMakeFiles/chessAI.dir/src/Bishop.cpp.o: CMakeFiles/chessAI.dir/flags.make
+CMakeFiles/chessAI.dir/src/Bishop.cpp.o: /Users/shirvilsheth/ChessAI/src/Bishop.cpp
+CMakeFiles/chessAI.dir/src/Bishop.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/chessAI.dir/src/Bishop.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/src/Bishop.cpp.o -MF CMakeFiles/chessAI.dir/src/Bishop.cpp.o.d -o CMakeFiles/chessAI.dir/src/Bishop.cpp.o -c /Users/shirvilsheth/ChessAI/src/Bishop.cpp
 
-CMakeFiles/chessAI.dir/Bishop.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/Bishop.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/Bishop.cpp > CMakeFiles/chessAI.dir/Bishop.cpp.i
+CMakeFiles/chessAI.dir/src/Bishop.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/src/Bishop.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/src/Bishop.cpp > CMakeFiles/chessAI.dir/src/Bishop.cpp.i
 
-CMakeFiles/chessAI.dir/Bishop.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/Bishop.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/Bishop.cpp -o CMakeFiles/chessAI.dir/Bishop.cpp.s
+CMakeFiles/chessAI.dir/src/Bishop.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/src/Bishop.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/src/Bishop.cpp -o CMakeFiles/chessAI.dir/src/Bishop.cpp.s
 
-CMakeFiles/chessAI.dir/King.cpp.o: CMakeFiles/chessAI.dir/flags.make
-CMakeFiles/chessAI.dir/King.cpp.o: /Users/shirvilsheth/ChessAI/King.cpp
-CMakeFiles/chessAI.dir/King.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/chessAI.dir/King.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/King.cpp.o -MF CMakeFiles/chessAI.dir/King.cpp.o.d -o CMakeFiles/chessAI.dir/King.cpp.o -c /Users/shirvilsheth/ChessAI/King.cpp
+CMakeFiles/chessAI.dir/src/King.cpp.o: CMakeFiles/chessAI.dir/flags.make
+CMakeFiles/chessAI.dir/src/King.cpp.o: /Users/shirvilsheth/ChessAI/src/King.cpp
+CMakeFiles/chessAI.dir/src/King.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/chessAI.dir/src/King.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/src/King.cpp.o -MF CMakeFiles/chessAI.dir/src/King.cpp.o.d -o CMakeFiles/chessAI.dir/src/King.cpp.o -c /Users/shirvilsheth/ChessAI/src/King.cpp
 
-CMakeFiles/chessAI.dir/King.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/King.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/King.cpp > CMakeFiles/chessAI.dir/King.cpp.i
+CMakeFiles/chessAI.dir/src/King.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/src/King.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/src/King.cpp > CMakeFiles/chessAI.dir/src/King.cpp.i
 
-CMakeFiles/chessAI.dir/King.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/King.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/King.cpp -o CMakeFiles/chessAI.dir/King.cpp.s
+CMakeFiles/chessAI.dir/src/King.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/src/King.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/src/King.cpp -o CMakeFiles/chessAI.dir/src/King.cpp.s
 
-CMakeFiles/chessAI.dir/Queen.cpp.o: CMakeFiles/chessAI.dir/flags.make
-CMakeFiles/chessAI.dir/Queen.cpp.o: /Users/shirvilsheth/ChessAI/Queen.cpp
-CMakeFiles/chessAI.dir/Queen.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/chessAI.dir/Queen.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/Queen.cpp.o -MF CMakeFiles/chessAI.dir/Queen.cpp.o.d -o CMakeFiles/chessAI.dir/Queen.cpp.o -c /Users/shirvilsheth/ChessAI/Queen.cpp
+CMakeFiles/chessAI.dir/src/Queen.cpp.o: CMakeFiles/chessAI.dir/flags.make
+CMakeFiles/chessAI.dir/src/Queen.cpp.o: /Users/shirvilsheth/ChessAI/src/Queen.cpp
+CMakeFiles/chessAI.dir/src/Queen.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/chessAI.dir/src/Queen.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/src/Queen.cpp.o -MF CMakeFiles/chessAI.dir/src/Queen.cpp.o.d -o CMakeFiles/chessAI.dir/src/Queen.cpp.o -c /Users/shirvilsheth/ChessAI/src/Queen.cpp
 
-CMakeFiles/chessAI.dir/Queen.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/Queen.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/Queen.cpp > CMakeFiles/chessAI.dir/Queen.cpp.i
+CMakeFiles/chessAI.dir/src/Queen.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/src/Queen.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/src/Queen.cpp > CMakeFiles/chessAI.dir/src/Queen.cpp.i
 
-CMakeFiles/chessAI.dir/Queen.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/Queen.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/Queen.cpp -o CMakeFiles/chessAI.dir/Queen.cpp.s
+CMakeFiles/chessAI.dir/src/Queen.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/src/Queen.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/src/Queen.cpp -o CMakeFiles/chessAI.dir/src/Queen.cpp.s
 
-CMakeFiles/chessAI.dir/Knight.cpp.o: CMakeFiles/chessAI.dir/flags.make
-CMakeFiles/chessAI.dir/Knight.cpp.o: /Users/shirvilsheth/ChessAI/Knight.cpp
-CMakeFiles/chessAI.dir/Knight.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/chessAI.dir/Knight.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/Knight.cpp.o -MF CMakeFiles/chessAI.dir/Knight.cpp.o.d -o CMakeFiles/chessAI.dir/Knight.cpp.o -c /Users/shirvilsheth/ChessAI/Knight.cpp
+CMakeFiles/chessAI.dir/src/Knight.cpp.o: CMakeFiles/chessAI.dir/flags.make
+CMakeFiles/chessAI.dir/src/Knight.cpp.o: /Users/shirvilsheth/ChessAI/src/Knight.cpp
+CMakeFiles/chessAI.dir/src/Knight.cpp.o: CMakeFiles/chessAI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shirvilsheth/ChessAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/chessAI.dir/src/Knight.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chessAI.dir/src/Knight.cpp.o -MF CMakeFiles/chessAI.dir/src/Knight.cpp.o.d -o CMakeFiles/chessAI.dir/src/Knight.cpp.o -c /Users/shirvilsheth/ChessAI/src/Knight.cpp
 
-CMakeFiles/chessAI.dir/Knight.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/Knight.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/Knight.cpp > CMakeFiles/chessAI.dir/Knight.cpp.i
+CMakeFiles/chessAI.dir/src/Knight.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chessAI.dir/src/Knight.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shirvilsheth/ChessAI/src/Knight.cpp > CMakeFiles/chessAI.dir/src/Knight.cpp.i
 
-CMakeFiles/chessAI.dir/Knight.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/Knight.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/Knight.cpp -o CMakeFiles/chessAI.dir/Knight.cpp.s
+CMakeFiles/chessAI.dir/src/Knight.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chessAI.dir/src/Knight.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shirvilsheth/ChessAI/src/Knight.cpp -o CMakeFiles/chessAI.dir/src/Knight.cpp.s
 
 # Object files for target chessAI
 chessAI_OBJECTS = \
-"CMakeFiles/chessAI.dir/main.cpp.o" \
-"CMakeFiles/chessAI.dir/Game.cpp.o" \
-"CMakeFiles/chessAI.dir/Board.cpp.o" \
-"CMakeFiles/chessAI.dir/Pawn.cpp.o" \
-"CMakeFiles/chessAI.dir/Piece.cpp.o" \
-"CMakeFiles/chessAI.dir/Rook.cpp.o" \
-"CMakeFiles/chessAI.dir/Bishop.cpp.o" \
-"CMakeFiles/chessAI.dir/King.cpp.o" \
-"CMakeFiles/chessAI.dir/Queen.cpp.o" \
-"CMakeFiles/chessAI.dir/Knight.cpp.o"
+"CMakeFiles/chessAI.dir/src/main.cpp.o" \
+"CMakeFiles/chessAI.dir/src/Game.cpp.o" \
+"CMakeFiles/chessAI.dir/src/Board.cpp.o" \
+"CMakeFiles/chessAI.dir/src/Pawn.cpp.o" \
+"CMakeFiles/chessAI.dir/src/Piece.cpp.o" \
+"CMakeFiles/chessAI.dir/src/Rook.cpp.o" \
+"CMakeFiles/chessAI.dir/src/Bishop.cpp.o" \
+"CMakeFiles/chessAI.dir/src/King.cpp.o" \
+"CMakeFiles/chessAI.dir/src/Queen.cpp.o" \
+"CMakeFiles/chessAI.dir/src/Knight.cpp.o"
 
 # External object files for target chessAI
 chessAI_EXTERNAL_OBJECTS =
 
-chessAI: CMakeFiles/chessAI.dir/main.cpp.o
-chessAI: CMakeFiles/chessAI.dir/Game.cpp.o
-chessAI: CMakeFiles/chessAI.dir/Board.cpp.o
-chessAI: CMakeFiles/chessAI.dir/Pawn.cpp.o
-chessAI: CMakeFiles/chessAI.dir/Piece.cpp.o
-chessAI: CMakeFiles/chessAI.dir/Rook.cpp.o
-chessAI: CMakeFiles/chessAI.dir/Bishop.cpp.o
-chessAI: CMakeFiles/chessAI.dir/King.cpp.o
-chessAI: CMakeFiles/chessAI.dir/Queen.cpp.o
-chessAI: CMakeFiles/chessAI.dir/Knight.cpp.o
+chessAI: CMakeFiles/chessAI.dir/src/main.cpp.o
+chessAI: CMakeFiles/chessAI.dir/src/Game.cpp.o
+chessAI: CMakeFiles/chessAI.dir/src/Board.cpp.o
+chessAI: CMakeFiles/chessAI.dir/src/Pawn.cpp.o
+chessAI: CMakeFiles/chessAI.dir/src/Piece.cpp.o
+chessAI: CMakeFiles/chessAI.dir/src/Rook.cpp.o
+chessAI: CMakeFiles/chessAI.dir/src/Bishop.cpp.o
+chessAI: CMakeFiles/chessAI.dir/src/King.cpp.o
+chessAI: CMakeFiles/chessAI.dir/src/Queen.cpp.o
+chessAI: CMakeFiles/chessAI.dir/src/Knight.cpp.o
 chessAI: CMakeFiles/chessAI.dir/build.make
 chessAI: /opt/homebrew/lib/libsfml-graphics.2.6.2.dylib
 chessAI: /opt/homebrew/lib/libsfml-window.2.6.2.dylib

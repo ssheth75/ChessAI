@@ -14,7 +14,7 @@ set(CMAKE_BUILD_TYPE Debug)
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
 # Add the executable
-add_executable(chessAI main.cpp Game.cpp Board.cpp Pawn.cpp Piece.cpp Rook.cpp Bishop.cpp King.cpp Queen.cpp Knight.cpp)
+add_executable(chessAI src/main.cpp src/Game.cpp src/Board.cpp src/Pawn.cpp src/Piece.cpp src/Rook.cpp src/Bishop.cpp src/King.cpp src/Queen.cpp src/Knight.cpp)
 
 # Link SFML libraries to the executable
 target_link_libraries(chessAI sfml-graphics sfml-window sfml-system)
