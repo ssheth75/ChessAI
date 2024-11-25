@@ -9,18 +9,26 @@ Pawn::Pawn(Player color, const int col, const int row, const std::string name) :
 {
     std::string textureFile = (color == Player::WHITE) ? "assets/wp.png" : "assets/bp.png";
 
-    if (!texture.loadFromFile(textureFile))
+    if (!m_texture.loadFromFile(textureFile))
     {
         std::cout << "Error loading texture: " << textureFile << std::endl;
     }
-    sprite.setTexture(texture); // Set the loaded texture to the sprite
+    m_sprite.setTexture(m_texture); // Set the loaded texture to the sprite
+}
+
+bool checkPromotion(Player color, int col)
+{
+    int promotionRank = (color == Player::BLACK ? 7 : 0);
+    if (col == promotionRank)
+        return true;
+    return false;
 }
 
 // col is first and row is second. col = x; row = y; board uses this and is the same as cartesian
 std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) const
 {
     std::vector<Move> moves;
-    Player color = board.m_grid[col][row]->getColor();
+    Player color = board.m_grid[col][row]->m_color;
 
     // Direction: +1 for black, -1 for white
     int direction = (color == Player::WHITE) ? -1 : 1;
@@ -30,8 +38,14 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
     // Forward Move
     if (col + direction >= 0 && col + direction < 8 && board.m_grid[col + direction][row] == nullptr)
     {
-        moves.push_back({piece, col + direction, row, MoveType::NORMAL}); // Single forward move
-
+        if (checkPromotion(color, col + direction))
+        {
+            moves.push_back({piece, col + direction, row, MoveType::PROMOTION}); // Single forward move
+        }
+        else
+        {
+            moves.push_back({piece, col + direction, row, MoveType::NORMAL}); // Single forward move
+        }
         // Double Forward Move (only from starting position)
         if ((color == Player::WHITE && col == 6) || (color == Player::BLACK && col == 1))
         {
@@ -48,10 +62,16 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
     if (row - 1 >= 0 && col + direction >= 0 && col + direction < 8)
     {
         Piece *target = board.m_grid[col + direction][row - 1];
-        if (target != nullptr && target->getColor() != color)
+        if (target != nullptr && target->m_color != color)
         {
-
-            moves.push_back({piece, col + direction, row - 1, MoveType::NORMAL}); // Diagonal capture left
+            if (checkPromotion(color, col + direction))
+            {
+                moves.push_back({piece, col + direction, row - 1, MoveType::PROMOTION});
+            }
+            else
+            {
+                moves.push_back({piece, col + direction, row - 1, MoveType::NORMAL}); // Diagonal capture left
+            }
         }
     }
 
@@ -59,11 +79,20 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
     if (row + 1 < 8 && col + direction >= 0 && col + direction < 8)
     {
         Piece *target = board.m_grid[col + direction][row + 1];
-        if (target != nullptr && target->getColor() != color)
+        if (target != nullptr && target->m_color != color)
         {
-            moves.push_back({piece, col + direction, row + 1, MoveType::NORMAL}); // Diagonal capture right
+            if (checkPromotion(color, col + direction))
+            {
+                moves.push_back({piece, col + direction, row + 1, MoveType::PROMOTION}); // Diagonal capture right
+            }
+            else
+            {
+                moves.push_back({piece, col + direction, row + 1, MoveType::NORMAL}); // Diagonal capture right
+            }
         }
     }
+
+    // Check pawn promotion
 
     return moves;
 
@@ -72,5 +101,5 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
 
 std::string Pawn::getType() const
 {
-    return "Pawn";
+    return m_type;
 }

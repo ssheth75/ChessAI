@@ -38,8 +38,7 @@ public:
     Board();
 
     // Public Member Functions
-    void makeMove(Move move);              // Make a move and update the board
-    Piece *getPieceAt(int x, int y) const; // Get the piece at a specific position
+    void makeMove(Move move, const PieceType userSelection = PieceType::NONE); // Make a move and update the board
     void checkStarMoves(int startRow, int startCol, int rowStep, int colStep,
                         std::vector<Move> &moves, Player color) const; // Check specific moves
     std::vector<Move> validatedMoves(std::vector<Move> potentialMoves);
@@ -54,6 +53,7 @@ public:
     std::vector<std::vector<Piece *>> m_grid;
     std::unordered_map<std::string, Piece *> m_whitePieces; // White pieces map
     std::unordered_map<std::string, Piece *> m_blackPieces; // 2D grid of piece pointers
+    int numPromoted = 0;                                    // used to keep track of the number of pieces that have been promoted
 
     // Commented function for potential future use
     // bool inCheck(KingPosition king, std::string kingColor);

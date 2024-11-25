@@ -79,6 +79,9 @@
         "numeric": "cpp",
         "shared_mutex": "cpp",
         "stop_token": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "typeindex": "cpp",
+        "*.ipp": "cpp",
+        "text_encoding": "cpp"
     }
 }

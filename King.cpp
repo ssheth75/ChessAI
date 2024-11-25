@@ -9,11 +9,11 @@ King::King(Player color, const int col, const int row, const std::string name) :
 {
     std::string textureFile = (color == Player::WHITE) ? "assets/wk.png" : "assets/bk.png";
 
-    if (!texture.loadFromFile(textureFile))
+    if (!m_texture.loadFromFile(textureFile))
     {
         std::cout << "Error loading texture: " << textureFile << std::endl;
     }
-    sprite.setTexture(texture); // Set the loaded texture to the sprite
+    m_sprite.setTexture(m_texture); // Set the loaded texture to the sprite
 }
 
 void checkCastling(Piece *king, int col, int row, const Board &board, std::vector<Move> &moves)
@@ -35,7 +35,7 @@ void checkCastling(Piece *king, int col, int row, const Board &board, std::vecto
             // Ensure the rook exists and hasn't moved
             if (rookRow >= 0 && rookRow < 8 &&
                 board.m_grid[rookCol][rookRow] != nullptr &&
-                board.m_grid[rookCol][rookRow]->getType() == "Rook" &&
+                board.m_grid[rookCol][rookRow]->getType() == "ROOK" &&
                 !board.m_grid[rookCol][rookRow]->hasMoved())
             {
                 // Check the path between the king and the rook
@@ -65,7 +65,7 @@ std::vector<Move> King::generateMoves(int col, int row, const Board &board) cons
 {
     std::vector<Move> moves;
     auto king = board.m_grid[col][row];
-    Player color = king->getColor();
+    Player color = king->m_color;
 
     // Possible directions the king can move
     std::vector<std::pair<int, int>> directions = {
@@ -89,7 +89,7 @@ std::vector<Move> King::generateMoves(int col, int row, const Board &board) cons
         if (newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8)
         {
             Piece *target = board.m_grid[newCol][newRow];
-            if (target == nullptr || target->getColor() != color) // Empty or opponent's piece
+            if (target == nullptr || target->m_color != color) // Empty or opponent's piece
             {
                 moves.push_back({king, newCol, newRow, MoveType::NORMAL}); // normal move
             }
@@ -107,5 +107,5 @@ std::vector<Move> King::generateMoves(int col, int row, const Board &board) cons
 
 std::string King::getType() const
 {
-    return "King";
+    return m_type;
 }

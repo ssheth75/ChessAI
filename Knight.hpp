@@ -17,6 +17,8 @@ public:
 
     ~Knight() override = default;
 
+    const std::string m_type = "NIGHT";
+
 private:
     std::string getType() const override;
     std::vector<Move> generateMoves(int col, int row, const Board &board) const override;

@@ -14,71 +14,84 @@ Board::Board() : m_whiteKing(7, 4), m_blackKing(0, 4)
 }
 
 // input: move = [col,row]
-void Board::makeMove(Move move)
+void Board::makeMove(Move move, const PieceType userSelection)
 {
     if (move.moveType == MoveType::CASTLE)
     {
-        this->move(move); // Move the king
+        this->move(move);                     // Move the king
         auto rookMove = rookCastleMove(move); // Get the rook's move
-        this->move(rookMove); // Move the rook
-
-        // Update king's position
-        updateKingPosition(move.piece, move.endCol, move.endRow);
+        this->move(rookMove);                 // Move the rook
+        rookMove.piece->setMoved(true);
     }
     else if (move.moveType == MoveType::NORMAL)
     {
         // move capture
-        if (m_grid[move.endCol][move.endRow] != nullptr && 
-            m_grid[move.endCol][move.endRow]->getColor() != move.piece->getColor())
+        if (m_grid[move.endCol][move.endRow] != nullptr &&
+            m_grid[move.endCol][move.endRow]->m_color != move.piece->m_color)
         {
-            auto& pieces = (move.piece->getColor() == Player::BLACK) ? m_whitePieces : m_blackPieces;
-            pieces.erase(m_grid[move.endCol][move.endRow]->name);
+            auto &opponentPieces = (move.piece->m_color == Player::BLACK) ? m_whitePieces : m_blackPieces;
+            opponentPieces.erase(m_grid[move.endCol][move.endRow]->m_name);
+            delete m_grid[move.endCol][move.endRow];
+        }
+        this->move(move); // Execute the move
+    }
+    else if (move.moveType == MoveType::PROMOTION)
+    {
+        // promotion move capture
+        if (m_grid[move.endCol][move.endRow] != nullptr &&
+            m_grid[move.endCol][move.endRow]->m_color != move.piece->m_color)
+        {
+            auto &pieces = (move.piece->m_color == Player::BLACK) ? m_whitePieces : m_blackPieces;
+            pieces.erase(m_grid[move.endCol][move.endRow]->m_name);
             delete m_grid[move.endCol][move.endRow];
         }
 
+        Piece *newPiece;
+        Player color = move.piece->m_color;
+
+        switch (userSelection)
+        {
+        case PieceType::ROOK:
+            ++this->numPromoted;
+            newPiece = new Rook(move.piece->m_color, move.piece->m_col, move.piece->m_row, move.piece->m_name);
+            break;
+
+        case PieceType::BISHOP:
+            // Code for BISHOP
+            ++this->numPromoted;
+            newPiece = new Bishop(move.piece->m_color, move.piece->m_col, move.piece->m_row, move.piece->m_name);
+            break;
+
+        case PieceType::KNIGHT: // Assuming you meant KNIGHT instead of repeating ROOK
+                                // Code for KNIGHT
+            ++this->numPromoted;
+            newPiece = new Knight(move.piece->m_color, move.piece->m_col, move.piece->m_row, move.piece->m_name);
+            break;
+
+        case PieceType::QUEEN:
+            // Code for QUEEN
+            ++this->numPromoted;
+            newPiece = new Queen(move.piece->m_color, move.piece->m_col, move.piece->m_row, move.piece->m_name);
+            break;
+
+        default:
+            // Optional: Handle unexpected values
+            break;
+        }
+
+        // add the new piece to its respective map
+        auto &pieces = (color == Player::BLACK ? this->m_blackPieces : this->m_whitePieces);
+        pieces[move.piece->m_name] = newPiece;
+
+        delete move.piece;
+        move.piece = newPiece;
         this->move(move); // Execute the move
-
-        // Update king's position if the moved piece is a king
-        updateKingPosition(move.piece, move.endCol, move.endRow);
     }
-
-    // add pawn promotion
-    // add en passant
-
     move.piece->setMoved(true);
 }
 
-
-void Board::updateKingPosition(Piece *king, int col, int row)
-{
-    
-    if (king->getType() == "King")
-    {
-        if (king->getColor() == Player::BLACK)
-        {
-            m_blackKing.col = col;
-            m_blackKing.row = row;
-        }
-        else if (king->getColor() == Player::WHITE)
-        {
-            m_whiteKing.col = col;
-            m_whiteKing.row = row;
-        }
-    }
-}
-
 // input: move = [col,row]
-Piece *Board::getPieceAt(int x, int y) const
-{
-    // Only access if piece present
-    if (m_grid[x][y])
-    {
-        std::cout << "piece type: " << m_grid[x][y]->getType() << std::endl;
-        return m_grid[x][y];
-    }
 
-    return nullptr;
-}
 // Used for Rook and Queen and Bishop
 void Board::checkStarMoves(int startRow, int startCol, int rowStep, int colStep,
                            std::vector<Move> &moves, Player color) const
@@ -94,7 +107,7 @@ void Board::checkStarMoves(int startRow, int startCol, int rowStep, int colStep,
             currentRow += rowStep;
             currentCol += colStep;
         }
-        else if (m_grid[currentCol][currentRow]->getColor() != color)
+        else if (m_grid[currentCol][currentRow]->m_color != color)
         {
             moves.push_back({this->m_grid[startCol][startRow], currentCol, currentRow, MoveType::NORMAL}); // normal move
             break;
@@ -209,13 +222,13 @@ std::vector<Move> Board::validatedMoves(std::vector<Move> potentialMoves)
 
     for (const auto &move : potentialMoves)
     {
-        Player color = move.piece->getColor();
+        Player color = move.piece->m_color;
         // if castle move
         // make both the king and rook movements.
         // then check if it is in check.
         // if not then add the king move to valid positions
         // undo both moves
-        // for castling this function only checks if the final state is a check state after 
+        // for castling this function only checks if the final state is a check state after
         // castling and if the path is safe
         // in generate() we will check if there is a path to castle
         // and that neither the pieces have moved
@@ -241,7 +254,7 @@ std::vector<Move> Board::validatedMoves(std::vector<Move> potentialMoves)
                     pathSquares.end(),
                     [this, &move](const auto &square)
                     {
-                        return !squareUnderAttack(square.first, square.second, move.piece->getColor());
+                        return !squareUnderAttack(square.first, square.second, move.piece->m_color);
                     });
 
                 if (safe)
@@ -333,7 +346,7 @@ bool Board::squareUnderAttack(int col, int row, Player color) const
     for (auto &piece : opponentPieces)
     {
         // Use `->` because `piece.second` is a pointer to a Piece
-        std::vector<Move> moves = piece.second->generateMoves(piece.second->col, piece.second->row, *this);
+        std::vector<Move> moves = piece.second->generateMoves(piece.second->m_col, piece.second->m_row, *this);
 
         for (auto move : moves)
         {
@@ -349,23 +362,23 @@ bool Board::squareUnderAttack(int col, int row, Player color) const
 MoveState Board::move(Move move)
 {
     // Store the current state for undo
-    Player color = move.piece->getColor();
+    Player color = move.piece->m_color;
     KingPosition king = getKingPosition(color);
 
     MoveState prevState = {
-        (move.piece->col == king.col && move.piece->row == king.row), // if we are moving the king
+        (move.piece->m_col == king.col && move.piece->m_row == king.row), // if we are moving the king
         move.piece,
-        move.piece->col,
-        move.piece->row,
+        move.piece->m_col,
+        move.piece->m_row,
         m_grid[move.endCol][move.endRow] // Piece at the destination (if any)
     };
 
     // Perform the move
     m_grid[move.endCol][move.endRow] = move.piece;      // Place the piece in the new position
-    m_grid[move.piece->col][move.piece->row] = nullptr; // Clear the old position
+    m_grid[move.piece->m_col][move.piece->m_row] = nullptr; // Clear the old position
 
     // If we are moving the king update king location variable
-    if (move.piece->col == king.col && move.piece->row == king.row)
+    if (move.piece->m_col == king.col && move.piece->m_row == king.row)
     {
         if (color == Player::BLACK)
         {
@@ -380,23 +393,23 @@ MoveState Board::move(Move move)
     }
 
     // Update the piece's internal position
-    move.piece->col = move.endCol;
-    move.piece->row = move.endRow;
+    move.piece->m_col = move.endCol;
+    move.piece->m_row = move.endRow;
 
     return prevState; // Return the previous state for undo
 }
 
 void Board::undo(const MoveState &state)
 {
-    Player color = state.movedPiece->getColor();
+    Player color = state.movedPiece->m_color;
 
     // Restore the moved piece's position
     m_grid[state.oldCol][state.oldRow] = state.movedPiece;                      // Place the piece back to its original position
-    m_grid[state.movedPiece->col][state.movedPiece->row] = state.capturedPiece; // Restore the captured piece (if any)
+    m_grid[state.movedPiece->m_col][state.movedPiece->m_row] = state.capturedPiece; // Restore the captured piece (if any)
 
     // Update the moved piece's internal position
-    state.movedPiece->col = state.oldCol;
-    state.movedPiece->row = state.oldRow;
+    state.movedPiece->m_col = state.oldCol;
+    state.movedPiece->m_row = state.oldRow;
 
     // if we just moved the king
     if (state.isKing)

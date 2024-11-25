@@ -9,18 +9,18 @@ Rook::Rook(Player color, const int col, const int row, const std::string name) :
 {
     std::string textureFile = (color == Player::WHITE) ? "assets/wr.png" : "assets/br.png";
 
-    if (!texture.loadFromFile(textureFile))
+    if (!m_texture.loadFromFile(textureFile))
     {
         std::cout << "Error loading texture: " << textureFile << std::endl;
     }
-    sprite.setTexture(texture); // Set the loaded texture to the sprite
+    m_sprite.setTexture(m_texture); // Set the loaded texture to the sprite
 }
 
 std::vector<Move> Rook::generateMoves(int col, int row, const Board &board) const
 {
 
     std::vector<Move> potentialMoves;
-    Player color = board.m_grid[col][row]->getColor();
+    Player color = board.m_grid[col][row]->m_color;
 
     // Check left, right, up, down
     board.checkStarMoves(row, col, -1, 0, potentialMoves, color); // Check left
@@ -35,7 +35,7 @@ std::vector<Move> Rook::generateMoves(int col, int row, const Board &board) cons
 
 std::string Rook::getType() const
 {
-    return "Rook";
+    return m_type;
 }
 
 // Checks all rook moves

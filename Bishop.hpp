@@ -17,6 +17,7 @@ public:
         return new Bishop(*this); // Copy constructor
     }
 
+    const std::string m_type = "BISHOP";
 
 private:
     std::vector<Move> generateMoves(int col, int row, const Board &board) const override;

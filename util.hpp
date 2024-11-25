@@ -15,3 +15,14 @@ enum class MoveType
     ENPASSANT,
     PROMOTION
 };
+
+enum class PieceType
+{
+    PAWN,
+    ROOK, 
+    QUEEN,
+    KING,
+    BISHOP,
+    KNIGHT,
+    NONE
+};

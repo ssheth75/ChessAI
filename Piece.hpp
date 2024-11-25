@@ -39,16 +39,15 @@ public:
 
     virtual void setMoved(bool moved) {}
 
-    Player getColor();
-
-    int col;
-    int row;
-    std::string name;
+    int m_col;
+    int m_row;
+    std::string m_name;
+    const Player m_color;
 
 protected:
-    Player color;
-    sf::Texture texture;
-    sf::Sprite sprite;
+    
+    sf::Texture m_texture;
+    sf::Sprite m_sprite;
 };
 
 #endif

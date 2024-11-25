@@ -17,6 +17,8 @@ public:
 
     ~Pawn() override = default;
 
+    const std::string m_type = "PAWN";
+
 private:
     std::vector<Move> generateMoves(int col, int row, const Board &board) const override;
     std::string getType() const override;

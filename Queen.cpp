@@ -9,17 +9,17 @@ Queen::Queen(Player color, const int col, const int row, const std::string name)
 {
     std::string textureFile = (color == Player::WHITE) ? "assets/wq.png" : "assets/bq.png";
 
-    if (!texture.loadFromFile(textureFile))
+    if (!m_texture.loadFromFile(textureFile))
     {
         std::cout << "Error loading texture: " << textureFile << std::endl;
     }
-    sprite.setTexture(texture); // Set the loaded texture to the sprite
+    m_sprite.setTexture(m_texture); // Set the loaded texture to the sprite
 }
 
 std::vector<Move> Queen::generateMoves(int col, int row, const Board &board) const
 {
     std::vector<Move> moves;
-    Player color = board.m_grid[col][row]->getColor();
+    Player color = board.m_grid[col][row]->m_color;
 
     board.checkStarMoves(row, col, -1, 0, moves, color); // Check left
     board.checkStarMoves(row, col, 1, 0, moves, color);  // Check right
@@ -37,5 +37,5 @@ std::vector<Move> Queen::generateMoves(int col, int row, const Board &board) con
 
 std::string Queen::getType() const
 {
-    return "Queen";
+    return m_type;
 }

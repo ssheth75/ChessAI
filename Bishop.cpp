@@ -9,16 +9,16 @@ Bishop::Bishop(Player color, const int col, const int row, const std::string nam
 {
     std::string textureFile = (color == Player::WHITE) ? "assets/wb.png" : "assets/bb.png";
 
-    if (!texture.loadFromFile(textureFile))
+    if (!m_texture.loadFromFile(textureFile))
     {
         std::cout << "Error loading texture: " << textureFile << std::endl;
     }
-    sprite.setTexture(texture); // Set the loaded texture to the sprite
+    m_sprite.setTexture(m_texture); // Set the loaded texture to the sprite
 }
 
 std::vector<Move> Bishop::generateMoves(int col, int row, const Board &board) const
 {
-    Player color = board.m_grid[col][row]->getColor();
+    Player color = board.m_grid[col][row]->m_color;
 
 
     // Check diagonals for potential moves
@@ -34,5 +34,5 @@ std::vector<Move> Bishop::generateMoves(int col, int row, const Board &board) co
 
 std::string Bishop::getType() const
 {
-    return "Bishop";
+    return m_type;
 }

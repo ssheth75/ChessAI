@@ -10,12 +10,16 @@ public:
     Game();     // Constructor to initialize the game
     void run(); // Main game loop
 
-    void handleClick(const int x, const int y, bool &turn);
+    void handleClick(const int x, const int y, Player &turn);
+
+    PieceType showPawnPromotionMenu(sf::RenderWindow &window, Player Color);
+
 
 private:
-    sf::RenderWindow window;            // The game window
-    Board board;                        // The chessboard
-    Piece *selectedPiece = nullptr;     // Currently selected piece
+    sf::RenderWindow m_window;            // The game window
+    Board m_board;                        // The chessboard
+    Piece *m_selectedPiece = nullptr;     // Currently selected piece
+    Player turn;
 };
 
 #endif
