@@ -7,7 +7,7 @@
 
 Pawn::Pawn(Player color, const int col, const int row, const std::string name) : Piece(color, col, row, name)
 {
-    std::string textureFile = (color == Player::WHITE) ? "assets/wp.png" : "assets/bp.png";
+    std::string textureFile = (color == Player::WHITE) ? "../assets/wp.png" : "../assets/bp.png";
 
     if (!m_texture.loadFromFile(textureFile))
     {

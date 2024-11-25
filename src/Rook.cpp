@@ -7,7 +7,7 @@
 
 Rook::Rook(Player color, const int col, const int row, const std::string name) : Piece(color, col, row, name)
 {
-    std::string textureFile = (color == Player::WHITE) ? "assets/wr.png" : "assets/br.png";
+    std::string textureFile = (color == Player::WHITE) ? "../assets/wr.png" : "../assets/br.png";
 
     if (!m_texture.loadFromFile(textureFile))
     {

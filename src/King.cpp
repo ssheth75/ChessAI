@@ -7,7 +7,7 @@
 
 King::King(Player color, const int col, const int row, const std::string name) : Piece(color, col, row, name)
 {
-    std::string textureFile = (color == Player::WHITE) ? "assets/wk.png" : "assets/bk.png";
+    std::string textureFile = (color == Player::WHITE) ? "../assets/wk.png" : "../assets/bk.png";
 
     if (!m_texture.loadFromFile(textureFile))
     {

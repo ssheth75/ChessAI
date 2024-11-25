@@ -7,7 +7,7 @@
 
 Queen::Queen(Player color, const int col, const int row, const std::string name) : Piece(color, col, row, name)
 {
-    std::string textureFile = (color == Player::WHITE) ? "assets/wq.png" : "assets/bq.png";
+    std::string textureFile = (color == Player::WHITE) ? "../assets/wq.png" : "../assets/bq.png";
 
     if (!m_texture.loadFromFile(textureFile))
     {
