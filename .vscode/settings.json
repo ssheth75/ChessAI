@@ -82,6 +82,10 @@
         "thread": "cpp",
         "typeindex": "cpp",
         "*.ipp": "cpp",
-        "text_encoding": "cpp"
+        "text_encoding": "cpp",
+        "hash_map": "cpp",
+        "hash_set": "cpp",
+        "slist": "cpp",
+        "system_error": "cpp"
     }
 }

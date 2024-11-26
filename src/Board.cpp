@@ -93,67 +93,28 @@ void Board::makeMove(Move move, const PieceType userSelection)
 // input: move = [col,row]
 
 // Used for Rook and Queen and Bishop
-void Board::checkStarMoves(int startRow, int startCol, int rowStep, int colStep,
-                           std::vector<Move> &moves, Player color) const
+void checkStarMoves(int startRow, int startCol, int rowStep, int colStep,
+                    std::vector<Move> &moves, Player color, const Board &board)
 {
     int currentRow = startRow + rowStep;
     int currentCol = startCol + colStep;
 
     while (currentRow >= 0 && currentRow < 8 && currentCol >= 0 && currentCol < 8)
     {
-        if (m_grid[currentCol][currentRow] == nullptr)
+        if (board.m_grid[currentCol][currentRow] == nullptr)
         {
-            moves.push_back({this->m_grid[startCol][startRow], currentCol, currentRow, MoveType::NORMAL}); // normal move
+            moves.push_back({board.m_grid[startCol][startRow], currentCol, currentRow, MoveType::NORMAL}); // normal move
             currentRow += rowStep;
             currentCol += colStep;
         }
-        else if (m_grid[currentCol][currentRow]->m_color != color)
+        else if (board.m_grid[currentCol][currentRow]->m_color != color)
         {
-            moves.push_back({this->m_grid[startCol][startRow], currentCol, currentRow, MoveType::NORMAL}); // normal move
+            moves.push_back({board.m_grid[startCol][startRow], currentCol, currentRow, MoveType::NORMAL}); // normal move
             break;
         }
         else
         {
             break;
-        }
-    }
-}
-
-void Board::draw(sf::RenderWindow &window)
-{
-    const int squareSize = 100;
-
-    // Draw the chessboard m_grid
-    for (int row = 0; row < 8; ++row)
-    {
-        for (int col = 0; col < 8; ++col)
-        {
-            sf::RectangleShape square(sf::Vector2f(squareSize, squareSize));
-            square.setPosition(col * squareSize, row * squareSize);
-            square.setFillColor((row + col) % 2 == 0 ? sf::Color(235, 236, 208, 255) : sf::Color(119, 149, 86, 255));
-            window.draw(square);
-        }
-    }
-
-    // Highlight valid moves
-    sf::RectangleShape highlight(sf::Vector2f(squareSize, squareSize));
-    highlight.setFillColor(sf::Color(0, 255, 0, 100)); // Semi-transparent green
-    for (const Move &validMove : m_validMoves)
-    {
-        highlight.setPosition(validMove.endRow * squareSize, validMove.endCol * squareSize);
-        window.draw(highlight);
-    }
-
-    // Draw pieces
-    for (int row = 0; row < 8; ++row)
-    {
-        for (int col = 0; col < 8; ++col)
-        {
-            Piece *piece = m_grid[row][col];
-            if (piece)
-            {
-                piece->draw(window, col * squareSize, row * squareSize, squareSize);
-            }
         }
     }
 }
@@ -209,16 +170,10 @@ void Board::setupBoard()
     m_whitePieces["wr2"] = m_grid[7][7];
 }
 
-KingPosition Board::getKingPosition(Player color) const
-{
-    return color == Player::BLACK ? this->m_blackKing : m_whiteKing;
-}
-
 // Ensure that no move creates a self-checked state.
-std::vector<Move> Board::validatedMoves(std::vector<Move> potentialMoves)
+void Board::validatedMoves(std::vector<Move> potentialMoves, std::unordered_map<std::string, std::vector<Move>> &validActiveMoves)
 {
     // Evaluate each move
-    std::vector<Move> validMoves;
 
     for (const auto &move : potentialMoves)
     {
@@ -266,7 +221,7 @@ std::vector<Move> Board::validatedMoves(std::vector<Move> potentialMoves)
                     // Check if the king is still safe after castling
                     if (!inCheck(color))
                     {
-                        validMoves.push_back(move); // Valid castling move
+                        validActiveMoves[move.piece->m_name].push_back(move); // Valid castling move
                     }
 
                     // Undo the king move first, then the rook move
@@ -283,13 +238,13 @@ std::vector<Move> Board::validatedMoves(std::vector<Move> potentialMoves)
             // Check if king is = in check
             if (!inCheck(color))
             {
-                validMoves.push_back(move); // Valid move
+                validActiveMoves[move.piece->m_name].push_back(move); // Valid move
             }
 
             this->undo(undoState);
         }
     }
-    return validMoves;
+    return;
 }
 
 Move Board::rookCastleMove(Move move)
@@ -332,7 +287,6 @@ bool Board::inCheck(Player color)
 {
     // Determine the opponent's pieces based on the king's color
     KingPosition kingPosition = (color == Player::BLACK ? this->m_blackKing : this->m_whiteKing);
-
     return squareUnderAttack(kingPosition.col, kingPosition.row, color);
 }
 
@@ -363,7 +317,7 @@ MoveState Board::move(Move move)
 {
     // Store the current state for undo
     Player color = move.piece->m_color;
-    KingPosition king = getKingPosition(color);
+    KingPosition king = (color == Player::BLACK ? this->m_blackKing : this->m_whiteKing);
 
     MoveState prevState = {
         (move.piece->m_col == king.col && move.piece->m_row == king.row), // if we are moving the king
@@ -374,7 +328,7 @@ MoveState Board::move(Move move)
     };
 
     // Perform the move
-    m_grid[move.endCol][move.endRow] = move.piece;      // Place the piece in the new position
+    m_grid[move.endCol][move.endRow] = move.piece;          // Place the piece in the new position
     m_grid[move.piece->m_col][move.piece->m_row] = nullptr; // Clear the old position
 
     // If we are moving the king update king location variable
@@ -404,7 +358,7 @@ void Board::undo(const MoveState &state)
     Player color = state.movedPiece->m_color;
 
     // Restore the moved piece's position
-    m_grid[state.oldCol][state.oldRow] = state.movedPiece;                      // Place the piece back to its original position
+    m_grid[state.oldCol][state.oldRow] = state.movedPiece;                          // Place the piece back to its original position
     m_grid[state.movedPiece->m_col][state.movedPiece->m_row] = state.capturedPiece; // Restore the captured piece (if any)
 
     // Update the moved piece's internal position
@@ -430,4 +384,11 @@ void Board::undo(const MoveState &state)
 Player opponent(Player color)
 {
     return (color == Player::BLACK) ? Player::WHITE : Player::BLACK;
+}
+
+bool Board::squareIsHighlighted(int col, int row){
+    for (auto move : m_highlightedMoves){
+        if (move.endCol == col && move.endRow == row) return true;
+    }
+    return false;
 }

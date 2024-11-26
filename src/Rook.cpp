@@ -23,10 +23,10 @@ std::vector<Move> Rook::generateMoves(int col, int row, const Board &board) cons
     Player color = board.m_grid[col][row]->m_color;
 
     // Check left, right, up, down
-    board.checkStarMoves(row, col, -1, 0, potentialMoves, color); // Check left
-    board.checkStarMoves(row, col, 1, 0, potentialMoves, color);  // Check right
-    board.checkStarMoves(row, col, 0, 1, potentialMoves, color);  // Check above
-    board.checkStarMoves(row, col, 0, -1, potentialMoves, color); // Check below
+    checkStarMoves(row, col, -1, 0, potentialMoves, color, board); // Check left
+    checkStarMoves(row, col, 1, 0, potentialMoves, color, board);  // Check right
+    checkStarMoves(row, col, 0, 1, potentialMoves, color, board);  // Check above
+    checkStarMoves(row, col, 0, -1, potentialMoves, color, board); // Check below
 
     // add castling
 

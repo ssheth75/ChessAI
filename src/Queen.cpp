@@ -21,16 +21,16 @@ std::vector<Move> Queen::generateMoves(int col, int row, const Board &board) con
     std::vector<Move> moves;
     Player color = board.m_grid[col][row]->m_color;
 
-    board.checkStarMoves(row, col, -1, 0, moves, color); // Check left
-    board.checkStarMoves(row, col, 1, 0, moves, color);  // Check right
-    board.checkStarMoves(row, col, 0, 1, moves, color);  // Check below
-    board.checkStarMoves(row, col, 0, -1, moves, color); // Check above
+    checkStarMoves(row, col, -1, 0, moves, color, board); // Check left
+    checkStarMoves(row, col, 1, 0, moves, color, board);  // Check right
+    checkStarMoves(row, col, 0, 1, moves, color, board);  // Check below
+    checkStarMoves(row, col, 0, -1, moves, color, board); // Check above
 
     // Check diagonals
-    board.checkStarMoves(row, col, -1, 1, moves, color);
-    board.checkStarMoves(row, col, 1, -1, moves, color);
-    board.checkStarMoves(row, col, 1, 1, moves, color);
-    board.checkStarMoves(row, col, -1, -1, moves, color);
+    checkStarMoves(row, col, -1, 1, moves, color, board);
+    checkStarMoves(row, col, 1, -1, moves, color, board);
+    checkStarMoves(row, col, 1, 1, moves, color, board);
+    checkStarMoves(row, col, -1, -1, moves, color, board);
 
     return moves;
 }

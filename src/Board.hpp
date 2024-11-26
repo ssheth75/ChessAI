@@ -39,17 +39,16 @@ public:
 
     // Public Member Functions
     void makeMove(Move move, const PieceType userSelection = PieceType::NONE); // Make a move and update the board
-    void checkStarMoves(int startRow, int startCol, int rowStep, int colStep,
-                        std::vector<Move> &moves, Player color) const; // Check specific moves
-    std::vector<Move> validatedMoves(std::vector<Move> potentialMoves);
-    void draw(sf::RenderWindow &window); // Draw the board and pieces
+
+    void validatedMoves(std::vector<Move> potentialMoves, std::unordered_map<std::string, std::vector<Move>> &validActiveMoves);
 
     bool squareUnderAttack(int col, int row, Player color) const; // Check if a piece is under attack. takes in friendly color
     Move rookCastleMove(Move move);
 
     // Public Member Variables
-    bool m_movesHighlighted = false; // Tracks if moves are highlighted
-    std::vector<Move> m_validMoves;  // Valid moves for the selected piece
+    bool m_movesHighlighted = false;
+    bool squareIsHighlighted(int col, int row);
+    std::vector<Move> m_highlightedMoves;
     std::vector<std::vector<Piece *>> m_grid;
     std::unordered_map<std::string, Piece *> m_whitePieces; // White pieces map
     std::unordered_map<std::string, Piece *> m_blackPieces; // 2D grid of piece pointers
@@ -67,14 +66,17 @@ private:
     KingPosition m_blackKing; // Position of the black king
 
     // Private Member Functions
-    void setupBoard();                                // Initialize the board with pieces
-    KingPosition getKingPosition(Player color) const; // Get king's position by color
-    bool inCheck(Player Color);                       // Check if a king is in check
-    MoveState move(Move move);                        // Execute a move
-    void undo(const MoveState &state);                // Undo a move
+    void setupBoard(); // Initialize the board with pieces
+
+    bool inCheck(Player Color);        // Check if a king is in check
+    MoveState move(Move move);         // Execute a move
+    void undo(const MoveState &state); // Undo a move
     void updateKingPosition(Piece *king, int col, int row);
 
     void handleClick(int mouseX, int mouseY); // Handle mouse clicks
 };
+
+void checkStarMoves(int startRow, int startCol, int rowStep, int colStep,
+                    std::vector<Move> &moves, Player color, const Board &board); // Check horizontol and vertical and diagnonal moves
 
 #endif

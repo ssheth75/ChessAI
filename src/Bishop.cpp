@@ -23,10 +23,10 @@ std::vector<Move> Bishop::generateMoves(int col, int row, const Board &board) co
 
     // Check diagonals for potential moves
     std::vector<Move> moves;
-    board.checkStarMoves(row, col, -1, 1, moves, color);
-    board.checkStarMoves(row, col, 1, -1, moves, color);
-    board.checkStarMoves(row, col, 1, 1, moves, color);
-    board.checkStarMoves(row, col, -1, -1, moves, color);
+    checkStarMoves(row, col, -1, 1, moves, color, board);
+    checkStarMoves(row, col, 1, -1, moves, color, board);
+    checkStarMoves(row, col, 1, 1, moves, color, board);
+    checkStarMoves(row, col, -1, -1, moves, color, board);
 
 
     return moves;
