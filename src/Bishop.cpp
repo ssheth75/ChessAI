@@ -36,3 +36,8 @@ std::string Bishop::getType() const
 {
     return m_type;
 }
+
+int Bishop::getVal() const
+{
+    return 3;
+}

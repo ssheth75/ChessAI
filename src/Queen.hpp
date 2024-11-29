@@ -16,6 +16,8 @@ public:
     }
     ~Queen() override = default;
 
+    int getVal() const override;
+
     const std::string m_type = "QUEEN";
 
 private:

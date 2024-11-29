@@ -52,6 +52,7 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
             if (board.m_grid[col + 2 * direction][row] == nullptr)
             {
                 moves.push_back({piece, col + (2 * direction), row, MoveType::NORMAL});
+
                 // std::cout << col + (2 * direction) << std::endl;
                 // std::cout << row << std::endl;
             }
@@ -62,7 +63,7 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
     if (row - 1 >= 0 && col + direction >= 0 && col + direction < 8)
     {
         Piece *target = board.m_grid[col + direction][row - 1];
-        if (target != nullptr && target->m_color != color)
+        if (target && target->m_color != color)
         {
             if (checkPromotion(color, col + direction))
             {
@@ -73,13 +74,17 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
                 moves.push_back({piece, col + direction, row - 1, MoveType::NORMAL}); // Diagonal capture left
             }
         }
+        else if (!target && col + direction == board.m_enPassantTargetSquare.col && row - 1 == board.m_enPassantTargetSquare.row)
+        {
+            moves.push_back({piece, col + direction, row - 1, MoveType::ENPASSANT});
+        }
     }
 
     // Capture Right
     if (row + 1 < 8 && col + direction >= 0 && col + direction < 8)
     {
         Piece *target = board.m_grid[col + direction][row + 1];
-        if (target != nullptr && target->m_color != color)
+        if (target && target->m_color != color)
         {
             if (checkPromotion(color, col + direction))
             {
@@ -90,9 +95,11 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
                 moves.push_back({piece, col + direction, row + 1, MoveType::NORMAL}); // Diagonal capture right
             }
         }
+        else if (!target && col + direction == board.m_enPassantTargetSquare.col && row + 1 == board.m_enPassantTargetSquare.row)
+        {
+            moves.push_back({piece, col + direction, row + 1, MoveType::ENPASSANT});
+        }
     }
-
-    // Check pawn promotion
 
     return moves;
 
@@ -102,4 +109,9 @@ std::vector<Move> Pawn::generateMoves(int col, int row, const Board &board) cons
 std::string Pawn::getType() const
 {
     return m_type;
+}
+
+int Pawn::getVal() const
+{
+    return 1;
 }

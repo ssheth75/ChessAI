@@ -39,3 +39,9 @@ std::string Queen::getType() const
 {
     return m_type;
 }
+
+
+int Queen::getVal() const
+{
+    return 9;
+}

@@ -109,3 +109,9 @@ std::string King::getType() const
 {
     return m_type;
 }
+
+
+int King::getVal() const
+{
+    return INT_MAX;
+}

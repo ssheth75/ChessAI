@@ -19,6 +19,8 @@ public:
 
     const std::string m_type = "NIGHT";
 
+    int getVal() const override;
+
 private:
     std::string getType() const override;
     std::vector<Move> generateMoves(int col, int row, const Board &board) const override;

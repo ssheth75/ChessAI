@@ -17,10 +17,11 @@ public:
 
     ~Rook() override = default;
 
+    int getVal() const override;
+
     bool hasMoved() const override { return m_moved; }
     void setMoved(bool moved) override { this->m_moved = moved; }
 
-    
     const std::string m_type = "ROOK";
 
 private:

@@ -38,4 +38,7 @@ std::string Rook::getType() const
     return m_type;
 }
 
-// Checks all rook moves
+int Rook::getVal() const
+{
+    return 3;
+}

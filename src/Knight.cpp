@@ -55,3 +55,8 @@ std::string Knight::getType() const
 {
     return m_type;
 }
+
+int Knight::getVal() const
+{
+    return 3;
+}

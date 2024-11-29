@@ -17,12 +17,13 @@ public:
         return new Bishop(*this); // Copy constructor
     }
 
+    int getVal() const override; // Pure virtual function
+
     const std::string m_type = "BISHOP";
 
 private:
     std::vector<Move> generateMoves(int col, int row, const Board &board) const override;
     std::string getType() const override;
-
 };
 
 #endif

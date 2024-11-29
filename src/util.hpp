@@ -13,7 +13,8 @@ enum class MoveType
     NORMAL,
     CASTLE,
     ENPASSANT,
-    PROMOTION
+    PROMOTION,
+    NONE
 };
 
 enum class PieceType

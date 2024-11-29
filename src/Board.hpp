@@ -47,12 +47,17 @@ public:
 
     // Public Member Variables
     bool m_movesHighlighted = false;
-    bool squareIsHighlighted(int col, int row);
+    bool isSquareHighlighted(int col, int row);
     std::vector<Move> m_highlightedMoves;
     std::vector<std::vector<Piece *>> m_grid;
     std::unordered_map<std::string, Piece *> m_whitePieces; // White pieces map
     std::unordered_map<std::string, Piece *> m_blackPieces; // 2D grid of piece pointers
-    int numPromoted = 0;                                    // used to keep track of the number of pieces that have been promoted
+    int numPromoted = 0;
+
+    Position m_enPassantTargetSquare; // used to keep track of the number of pieces that have been promoted
+
+    MoveState move(Move move);         // Execute a move
+    void undo(const MoveState &state); // Undo a move
 
     // Commented function for potential future use
     // bool inCheck(KingPosition king, std::string kingColor);
@@ -69,8 +74,7 @@ private:
     void setupBoard(); // Initialize the board with pieces
 
     bool inCheck(Player Color);        // Check if a king is in check
-    MoveState move(Move move);         // Execute a move
-    void undo(const MoveState &state); // Undo a move
+
     void updateKingPosition(Piece *king, int col, int row);
 
     void handleClick(int mouseX, int mouseY); // Handle mouse clicks

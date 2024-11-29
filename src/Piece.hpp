@@ -33,6 +33,8 @@ public:
 
     virtual std::string getType() const = 0; // Pure virtual function
 
+    virtual int getVal() const = 0; // Pure virtual function
+
     virtual void draw(sf::RenderWindow &window, int x, int y, int squareSize);
 
     virtual bool hasMoved() const { return false; } // Default implementation for other pieces
@@ -45,7 +47,6 @@ public:
     const Player m_color;
 
 protected:
-    
     sf::Texture m_texture;
     sf::Sprite m_sprite;
 };

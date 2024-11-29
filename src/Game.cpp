@@ -16,16 +16,16 @@ void Game::run()
 
     sf::Event event;
 
+    // Set initial turn to white's move
     m_turn = Player::WHITE;
 
-    auto allMoves = generateAllMoves(m_turn);
-    m_board.validatedMoves(allMoves, this->m_validActiveMoves);
+    // Generate all possible valid moves for the current turn
+    m_board.validatedMoves(generateAllMoves(m_turn), this->m_validActiveMoves);
 
     // Main event-driven loop
     while (m_window.isOpen())
     {
         // Wait for an event
-
         if (m_window.waitEvent(event))
         {
             if (event.type == sf::Event::Closed)
@@ -35,9 +35,20 @@ void Game::run()
             else if (event.type == sf::Event::MouseButtonPressed)
             {
                 // Handle click events
-                int x = event.mouseButton.x; // X-coordinate of the mouse click
-                int y = event.mouseButton.y; // Y-coordinate of the mouse click
-                handleClick(x, y, m_turn);
+                //if (!isGameOver())
+                //    if (m_turn == Player::WHITE)
+                 //   {
+
+                        int x = event.mouseButton.x; // X-coordinate of the mouse click
+                        int y = event.mouseButton.y; // Y-coordinate of the mouse click
+                        handleClick(x, y, m_turn);
+                    //}
+                  //  else
+                  //  {
+                        // Handle AI turn
+                   //     playBotTurn();
+                   //     m_turn = Player::WHITE;
+                   /// }
 
                 // Render after processing the event
                 m_window.clear(sf::Color::White);
@@ -53,25 +64,29 @@ void Game::handleClick(const int x, const int y, Player &turn)
     int row = x / 100;
     int col = y / 100;
 
+    // Make sure click is in bounds
     if (row < 0 || row >= 8 || col < 0 || col >= 8)
         return;
 
     Piece *piece = m_board.m_grid[col][row];
 
+    // If a current turn piece is clicked, initialize the highlighted moves
+    // Will be rendered in game loop
     if (piece && piece->m_color == turn)
     {
         // highlignt the valid moves for the piece that was clicked
         m_board.m_highlightedMoves = m_validActiveMoves[piece->m_name];
         m_board.m_movesHighlighted = true;
     }
-    else if (m_board.m_movesHighlighted && m_board.squareIsHighlighted(col, row)) // if opponent piece or null piece
+    // If highlighted piece is clicked
+    else if (m_board.m_movesHighlighted && m_board.isSquareHighlighted(col, row))
     {
         for (const Move &validMove : m_board.m_highlightedMoves)
         {
             if (validMove.endCol == col && validMove.endRow == row)
             {
                 // Make the move
-                if (validMove.moveType == MoveType::PROMOTION)
+                if (validMove.moveType == MoveType::PROMOTION) // Promotion requires an additional menu
                 {
                     PieceType userSelection = showPawnPromotionMenu(validMove.piece->m_color);
                     m_board.makeMove(validMove, userSelection);
@@ -86,14 +101,18 @@ void Game::handleClick(const int x, const int y, Player &turn)
                 m_board.m_highlightedMoves.clear();
                 m_board.m_movesHighlighted = false;
                 m_validActiveMoves.clear();
-                auto allMoves = generateAllMoves(m_turn);
-                m_board.validatedMoves(allMoves, this->m_validActiveMoves);
+
+                // Genertate next turn moves
+                m_board.validatedMoves(generateAllMoves(m_turn), m_validActiveMoves);
+
+                // handle rights
+                //  castle rights -> look at king active moves, if any are castle then castle rights = true.
+                //  know which side by looking at move destination
             }
         }
     }
-    else
+    else // piece is null and is not a highlighted square
     {
-
         m_board.m_highlightedMoves.clear();
         m_board.m_movesHighlighted = false;
     }
@@ -109,7 +128,6 @@ std::vector<Move> Game::generateAllMoves(Player color)
         for (int col = 0; col < 8; ++col)
         {
             Piece *piece = m_board.m_grid[col][row]; // Access the piece at the current position
-
             // If there's a piece and it matches the specified color
             if (piece != nullptr && piece->m_color == color)
             {
@@ -123,6 +141,123 @@ std::vector<Move> Game::generateAllMoves(Player color)
     }
 
     return allMoves;
+}
+
+Move Game::getAIMove()
+{
+    int maxEval = -INT_MAX;
+    Move bestMove(nullptr, -1, -1, MoveType::NONE);
+
+    for (auto pair : m_validActiveMoves)
+    {
+        for (const Move &move : pair.second)
+        {
+            auto undoState = m_board.move(move);            // Simulate AI's move
+            int eval = minimax(3, -INT_MAX, INT_MAX, true); // Depth 3
+            m_board.undo(undoState);                        // Undo the move after evaluation
+
+            if (eval > maxEval)
+            {
+                maxEval = eval;
+                bestMove = move;
+            }
+        }
+    }
+
+    return bestMove; // Return the best move for the AI
+}
+
+void Game::playBotTurn()
+{
+    auto move = getAIMove();
+    m_board.move(move);
+
+    m_board.validatedMoves(generateAllMoves(m_turn), this->m_validActiveMoves);
+}
+
+bool Game::isGameOver()
+{
+    return false;
+}
+
+int Game::evaluateBoard()
+{
+    int score = 0;
+
+    // Simple evaluation: material balance
+    for (int row = 0; row < 8; ++row)
+    {
+        for (int col = 0; col < 8; ++col)
+        {
+            Piece *piece = m_board.m_grid[row][col];
+            if (piece != nullptr)
+            {
+                if (piece->m_color == m_turn)
+                {
+                    score += piece->getVal(); // Add value for player's pieces
+                }
+                else
+                {
+                    score -= piece->getVal(); // Subtract value for opponent's pieces
+                }
+            }
+        }
+    }
+
+    return score;
+}
+
+int Game::minimax(int depth, int alpha, int beta, bool isMaximizingPlayer)
+{
+    // Base case: If maximum depth is reached or the game is over
+    if (depth == 0 || isGameOver())
+    {
+        return evaluateBoard(); // Evaluate from the AI's perspective
+    }
+
+    // AI's turn: Maximizing player
+    int maxEval = -INT_MAX;
+    for (const auto &pair : m_validActiveMoves)
+    {
+        for (const Move &move : pair.second)
+        {
+            auto undoState = m_board.move(move);
+            int eval = minimax(depth - 1, alpha, beta, true); // Recur for the next depth
+            m_board.undo(undoState);                          // Undo the move after evaluation
+            maxEval = std::max(maxEval, eval);                // Maximize score
+            alpha = std::max(alpha, eval);
+            if (beta <= alpha)
+            {
+                break; // Alpha-Beta Pruning
+            }
+        }
+    }
+    return maxEval;
+}
+
+std::string castleSide(int rookCol, int rookRow)
+{
+    if (rookCol == 0 && rookRow == 6)
+    {
+        // top right rook
+        return "bks";
+    }
+    else if (rookCol == 0 && rookRow == 2)
+    {
+        // top left rook
+        return "bqs";
+    }
+    else if (rookCol == 7 && rookRow == 2)
+    {
+        // bottom left rook
+        return "wqs";
+    }
+    else if (rookCol == 7 && rookRow == 6)
+    {
+        // bottom right rook
+        return "wks";
+    }
+    return "error in input";
 }
 
 // Function to show the pawn promotion menu

@@ -8,7 +8,7 @@
 #include "King.hpp"
 #include "Queen.hpp"
 
-Board::Board() : m_whiteKing(7, 4), m_blackKing(0, 4)
+Board::Board() : m_whiteKing(7, 4), m_blackKing(0, 4), m_enPassantTargetSquare(-1, -1)
 {
     setupBoard();
 }
@@ -22,6 +22,8 @@ void Board::makeMove(Move move, const PieceType userSelection)
         auto rookMove = rookCastleMove(move); // Get the rook's move
         this->move(rookMove);                 // Move the rook
         rookMove.piece->setMoved(true);
+        m_enPassantTargetSquare.col = -1; // inactive
+        m_enPassantTargetSquare.row = -1; // inactive
     }
     else if (move.moveType == MoveType::NORMAL)
     {
@@ -32,7 +34,44 @@ void Board::makeMove(Move move, const PieceType userSelection)
             auto &opponentPieces = (move.piece->m_color == Player::BLACK) ? m_whitePieces : m_blackPieces;
             opponentPieces.erase(m_grid[move.endCol][move.endRow]->m_name);
             delete m_grid[move.endCol][move.endRow];
+            m_grid[move.endCol][move.endRow] = nullptr;
+
+            // If enpassant was available and wasnt taken the target squares should be null.
+            m_enPassantTargetSquare.col = -1; // inactive
+            m_enPassantTargetSquare.row = -1; // inactive
         }
+
+        // check if double pawn move
+        if (abs(move.piece->m_col - move.endCol) == 2)
+        { // a pawn moved 2 steps in
+            // set enPassant square
+            m_enPassantTargetSquare.row = move.endRow;
+            m_enPassantTargetSquare.col = (move.piece->m_color == Player::BLACK ? 2 : 5);
+        }
+        else
+        {
+            // If enpassant was available and wasnt taken the target squares should be null.
+            m_enPassantTargetSquare.col = -1; // inactive
+            m_enPassantTargetSquare.row = -1; // inactive
+        }
+
+        this->move(move); // Execute the move
+    }
+    else if (move.moveType == MoveType::ENPASSANT)
+    {
+        auto &pieces = (move.piece->m_color == Player::BLACK) ? m_whitePieces : m_blackPieces;
+
+        // 3 and 4 are the rows where a piece will be taken
+        int enPassantCaptureCol = (move.piece->m_color) == Player::WHITE ? 3 : 4;
+
+        pieces.erase(m_grid[enPassantCaptureCol][move.endRow]->m_name);
+        delete m_grid[enPassantCaptureCol][move.endRow];
+        m_grid[enPassantCaptureCol][move.endRow] = nullptr; // dangling pointer
+
+        // Enpassant was done so set the target squares to inactive
+        m_enPassantTargetSquare.col = -1; // inactive
+        m_enPassantTargetSquare.row = -1; // inactive
+
         this->move(move); // Execute the move
     }
     else if (move.moveType == MoveType::PROMOTION)
@@ -44,8 +83,8 @@ void Board::makeMove(Move move, const PieceType userSelection)
             auto &pieces = (move.piece->m_color == Player::BLACK) ? m_whitePieces : m_blackPieces;
             pieces.erase(m_grid[move.endCol][move.endRow]->m_name);
             delete m_grid[move.endCol][move.endRow];
+            m_grid[move.endCol][move.endRow] = nullptr; // dangling pointer
         }
-
         Piece *newPiece;
         Player color = move.piece->m_color;
 
@@ -86,8 +125,13 @@ void Board::makeMove(Move move, const PieceType userSelection)
         delete move.piece;
         move.piece = newPiece;
         this->move(move); // Execute the move
+
+        // If enpassant was available and wasnt taken the target squares should be null.
+        m_enPassantTargetSquare.col = -1; // inactive
+        m_enPassantTargetSquare.row = -1; // inactive
     }
-    move.piece->setMoved(true);
+
+    move.piece->setMoved(true); // sets moved to true for pawn and king
 }
 
 // input: move = [col,row]
@@ -386,9 +430,12 @@ Player opponent(Player color)
     return (color == Player::BLACK) ? Player::WHITE : Player::BLACK;
 }
 
-bool Board::squareIsHighlighted(int col, int row){
-    for (auto move : m_highlightedMoves){
-        if (move.endCol == col && move.endRow == row) return true;
+bool Board::isSquareHighlighted(int col, int row)
+{
+    for (auto move : m_highlightedMoves)
+    {
+        if (move.endCol == col && move.endRow == row)
+            return true;
     }
     return false;
 }
